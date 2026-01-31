@@ -1,0 +1,71 @@
+export const theme = {
+  colors: {
+    blue: '#003262',
+    blueLight: '#4A8FAD',
+    red: '#C84134',
+    dark: '#1A2733',
+    royal: '#023E8A',
+    gold: '#D4A03A',
+    goldDark: '#B8860B',
+    navy: '#0F2535',
+    white: '#F8F8F8',
+    gray: '#6B7280',
+    black: '#000000',
+  },
+  fonts: {
+    bebas: "'Bebas Neue', sans-serif",
+    montserrat: "'Montserrat', sans-serif",
+    inter: "'Inter', sans-serif",
+  },
+  fontWeights: {
+    light: 300,
+    regular: 400,
+    medium: 500,
+    semibold: 600,
+    bold: 700,
+    black: 900,
+  },
+  gradients: {
+    blue: 'linear-gradient(135deg, #003262 0%, #023E8A 100%)',
+    gold: 'linear-gradient(135deg, #D4A03A 0%, #B8860B 100%)',
+  },
+  shadows: {
+    sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+    lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+    xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+    '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+  },
+  breakpoints: {
+    sm: '640px',
+    md: '768px',
+    lg: '1024px',
+    xl: '1280px',
+    '2xl': '1536px',
+  },
+  spacing: {
+    xs: '0.25rem',
+    sm: '0.5rem',
+    md: '1rem',
+    lg: '1.5rem',
+    xl: '2rem',
+    '2xl': '3rem',
+    '3xl': '4rem',
+    '4xl': '6rem',
+  },
+  borderRadius: {
+    sm: '0.25rem',
+    md: '0.375rem',
+    lg: '0.5rem',
+    xl: '0.75rem',
+    '2xl': '1rem',
+    full: '9999px',
+  },
+  transitions: {
+    fast: '150ms ease-in-out',
+    normal: '300ms ease-in-out',
+    slow: '500ms ease-in-out',
+  },
+};
+
+export type Theme = typeof theme;
