@@ -14,9 +14,8 @@ export const theme = {
     pageBackground: "#F4F4F4",
   },
   fonts: {
-    bebas: "'Bebas Neue', sans-serif",
-    montserrat: "'Montserrat', sans-serif",
-    inter: "'Inter', sans-serif",
+    montserrat: "var(--font-montserrat), sans-serif",
+    inter: "var(--font-inter), sans-serif",
   },
   fontWeights: {
     light: 300,
@@ -25,10 +24,6 @@ export const theme = {
     semibold: 600,
     bold: 700,
     black: 900,
-  },
-  gradients: {
-    blue: "linear-gradient(135deg, #003262 0%, #023E8A 100%)",
-    gold: "linear-gradient(135deg, #D4A03A 0%, #B8860B 100%)",
   },
   shadows: {
     sm: "0 1px 2px 0 rgba(0, 0, 0, 0.05)",

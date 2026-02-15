@@ -4,14 +4,70 @@ import { motion } from "framer-motion";
 import { FaMapMarkerAlt, FaEnvelope } from "react-icons/fa";
 import styled from "styled-components";
 import { theme } from "@/styles/theme";
-import { SectionContainer, Tagline, BebasTitle } from "@/styles/SharedComponents";
 import { motionPresets } from "@/lib/utils/animations";
 import Input from "@/components/Input";
 import Textarea from "@/lib/components/TextArea";
 import Dropdown from "@/lib/components/Dropdown";
 import type { DropdownOption } from "@/lib/components/Dropdown";
+import Button from "@/lib/components/Button";
 
 // STYLED COMPONENTS
+// SectionContainer component 
+const SectionContainer = styled.div`
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+
+  @media (min-width: ${theme.breakpoints.sm}) {
+    padding: 0 3rem;
+  }
+
+  @media (min-width: ${theme.breakpoints.lg}) {
+    padding: 0 4rem;
+  }
+`;
+
+// Tagline component 
+const Tagline = styled.p`
+  font-family: ${theme.fonts.montserrat};
+  font-weight: ${theme.fontWeights.semibold};
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  @media (min-width: ${theme.breakpoints.md}) {
+    font-size: 1rem;
+  }
+`;
+
+// BebasTitle component  - replaced Bebas with Montserrat
+const BebasTitle = styled.h2<{ $size?: "sm" | "md" | "lg" }>`
+  font-family: ${theme.fonts.montserrat};
+  font-weight: ${theme.fontWeights.bold};
+  letter-spacing: 0.05em;
+
+  ${(props) => {
+    if (props.$size === "sm")
+      return `
+      font-size: 2.5rem;
+      @media (min-width: ${theme.breakpoints.md}) { font-size: 3.5rem; }
+      @media (min-width: ${theme.breakpoints.lg}) { font-size: 4rem; }
+    `;
+    if (props.$size === "lg")
+      return `
+      font-size: 3rem;
+      @media (min-width: ${theme.breakpoints.md}) { font-size: 4.5rem; }
+      @media (min-width: ${theme.breakpoints.lg}) { font-size: 5.5rem; }
+    `;
+    // Default 'md'
+    return `
+      font-size: 3rem;
+      @media (min-width: ${theme.breakpoints.md}) { font-size: 4rem; }
+      @media (min-width: ${theme.breakpoints.lg}) { font-size: 4.5rem; }
+    `;
+  }}
+`;
+
 const ContactSection = styled.section`
   padding: 5rem 2rem;
 
@@ -109,27 +165,12 @@ const FormRow = styled.div`
   }
 `;
 
-const SubmitButton = styled.button`
+const SubmitButtonWrapper = styled.div`
   width: 100%;
-  padding: 1rem 2rem;
-  background: ${theme.colors.blue};
-  color: white;
-  border: none;
-  border-radius: ${theme.borderRadius.lg};
-  font-family: ${theme.fonts.montserrat};
-  font-weight: ${theme.fontWeights.semibold};
-  font-size: 1.125rem;
-  cursor: pointer;
   margin-top: 0.5rem;
 
-  &:hover {
-    background: ${theme.colors.royal};
-  }
-
-  &:disabled {
-    background: #ccc;
-    cursor: not-allowed;
-    transform: none;
+  button {
+    width: 100%;
   }
 `;
 
@@ -265,9 +306,11 @@ export default function Contact() {
                   rows={5}
                 />
 
-                <SubmitButton type="submit" className="button-hover-lift">
-                  Send Message
-                </SubmitButton>
+                <SubmitButtonWrapper>
+                  <Button variant="primary" type="submit" className="button-hover-lift">
+                    Send Message
+                  </Button>
+                </SubmitButtonWrapper>
               </Form>
             </FormCard>
           </motion.div>

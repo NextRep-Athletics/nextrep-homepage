@@ -1,5 +1,20 @@
 import type { Metadata } from "next";
+import { Inter, Montserrat } from "next/font/google";
 import ClientLayout from "./ClientLayout";
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["400", "600", "700", "900"],
+  variable: "--font-montserrat",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "NextRep Athletics - Science-Based Personal Training",
@@ -61,7 +76,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className={`${inter.className} ${montserrat.variable}`}>
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>

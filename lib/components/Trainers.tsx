@@ -1,14 +1,75 @@
 "use client";
-import Image from "next/image";
+
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import { theme } from "@/styles/theme";
-import { SectionContainer, BebasTitle } from "@/styles/SharedComponents";
 import { motionPresets, staggeredAnimation } from "@/lib/utils/animations";
 import { trainers } from "@/lib/constants/trainers";
 import type { Trainer, TrainerCredential } from "@/lib/constants/trainers";
 
 // STYLED COMPONENTS
+// SectionContainer component 
+const SectionContainer = styled.div`
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+
+  @media (min-width: ${theme.breakpoints.sm}) {
+    padding: 0 3rem;
+  }
+
+  @media (min-width: ${theme.breakpoints.lg}) {
+    padding: 0 4rem;
+  }
+`;
+
+// const BebasTitle = styled.h2<{ $size?: "sm" | "md" | "lg" }>`
+//   font-family: ${theme.fonts.montserrat};
+//   font-weight: ${theme.fontWeights.bold};
+//   letter-spacing: 0.05em;
+
+//   ${(props) => {
+//     if (props.$size === "sm")
+//       return `
+//       font-size: 2.5rem;
+//       @media (min-width: ${theme.breakpoints.md}) { font-size: 3.5rem; }
+//       @media (min-width: ${theme.breakpoints.lg}) { font-size: 4rem; }
+//     `;
+//     if (props.$size === "lg")
+//       return `
+//       font-size: 3rem;
+//       @media (min-width: ${theme.breakpoints.md}) { font-size: 4.5rem; }
+//       @media (min-width: ${theme.breakpoints.lg}) { font-size: 5.5rem; }
+//     `;
+//     // Default 'md'
+//     return `
+//       font-size: 3rem;
+//       @media (min-width: ${theme.breakpoints.md}) { font-size: 4rem; }
+//       @media (min-width: ${theme.breakpoints.lg}) { font-size: 4.5rem; }
+//     `;
+//   }}
+// `;
+
+// HeroTitle component 
+const HeroTitle = styled.h1`
+  font-family: ${theme.fonts.montserrat};
+  font-size: 3.75rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+
+  .blue {
+    color: ${theme.colors.blue};
+  }
+
+  .gold {
+    color: ${theme.colors.gold};
+  }
+
+  @media (min-width: ${theme.breakpoints.md}) {
+    font-size: 4.25rem;
+  }
+`;
+
 const TrainersSection = styled.section`
   padding: 5rem 2rem;
 
@@ -21,7 +82,7 @@ const TrainersSection = styled.section`
   }
 `;
 
-const StyledBebasTitle = styled(BebasTitle)`
+const StyledTrainerTitle = styled(HeroTitle)`
   text-align: center;
   margin-bottom: 4rem;
 
@@ -162,12 +223,6 @@ function TrainerCardComponent({ trainer, index }: TrainerCardComponentProps) {
           {/* Trainer Photo */}
           <TrainerImageWrapper>
             {/* TODO: Replace with actual Image component when photos are available */}
-            {/* <Image 
-              src={trainer.photo} 
-              alt={trainer.name}
-              fill
-              style={{ objectFit: 'cover' }}
-            /> */}
             👤
           </TrainerImageWrapper>
 
@@ -205,10 +260,10 @@ export default function Trainers() {
     <TrainersSection id="trainers">
       <SectionContainer>
         <motion.div {...motionPresets.fadeInUpSmall}>
-          <StyledBebasTitle $size="md">
+          <StyledTrainerTitle>
             <span className="blue">MEET YOUR </span>
             <span className="gold">TRAINERS</span>
-          </StyledBebasTitle>
+          </StyledTrainerTitle>
         </motion.div>
 
         <TrainersGrid>

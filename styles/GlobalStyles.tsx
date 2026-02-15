@@ -1,10 +1,8 @@
-'use client'
-import { createGlobalStyle } from 'styled-components';
-import { theme } from './theme';
+"use client";
+import { createGlobalStyle } from "styled-components";
+import { theme } from "./theme";
 
 export const GlobalStyles = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
-
   * {
     margin: 0;
     padding: 0;
@@ -57,5 +55,13 @@ export const GlobalStyles = createGlobalStyle`
   /* Remove default input styles */
   input, textarea, select {
     font-family: inherit;
+  }
+
+  .text-gold {
+    color: #D4A03A;
+  }
+ 
+  .font-montserrat {
+    font-family: var(--font-montserrat), sans-serif;
   }
 `;

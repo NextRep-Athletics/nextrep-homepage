@@ -2,19 +2,49 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import { theme } from "@/styles/theme";
-import { Tagline } from "@/styles/SharedComponents";
 import { fadeInImmediate } from "@/lib/utils/animations";
 import GymBackground from "@/lib/assets/images/GymBackground.jpg";
+import Button from "@/lib/components/Button";
 
-// STYLED COMPONENTS
+const Tagline = styled.p`
+  font-family: ${theme.fonts.montserrat};
+  font-weight: ${theme.fontWeights.semibold};
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  @media (min-width: ${theme.breakpoints.md}) {
+    font-size: 1rem;
+  }
+`;
+
+const HeroTitle = styled.h1`
+  font-family: ${theme.fonts.montserrat};
+  font-size: 3.75rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+
+  .blue {
+    color: ${theme.colors.blue};
+  }
+
+  .gold {
+    color: ${theme.colors.gold};
+  }
+
+  @media (min-width: ${theme.breakpoints.md}) {
+    font-size: 4.25rem;
+  }
+`;
+
 const HeroSection = styled.section`
   position: relative;
-  min-height: 100vh;
+  min-height: 70vh;
   display: flex;
   align-items: center;
   background-image: url(${GymBackground.src});
-  background-size: cover; /* Fills container */
-  background-position: center; /* Centers image */
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
   overflow: hidden;
 
@@ -22,23 +52,14 @@ const HeroSection = styled.section`
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(255, 255, 255, 0.85); /* 60% dark overlay */
+    background: rgba(255, 255, 255, 0.85);
     z-index: 1;
   }
 
   & > * {
     position: relative;
-    z-index: 2; /* Content above overlay */
+    z-index: 2;
   }
-`;
-
-const HeroOverlay = styled.div`
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5); /* Dark overlay for readability */
-  background-image: url(${GymBackground.src});
-  background-size: cover;
-  background-position: center;
 `;
 
 const HeroContainer = styled.div`
@@ -49,6 +70,24 @@ const HeroContainer = styled.div`
   padding: 4rem 2rem;
   width: 100%;
 
+  .hero-subtitle {
+    color: #1a2733;
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+
+    @media (min-width: ${theme.breakpoints.lg}) {
+      grid-template-columns: 1fr 400px;
+      gap: 4rem;
+    }
+  }
+
   @media (min-width: ${theme.breakpoints.sm}) {
     padding: 4rem 3rem;
   }
@@ -58,68 +97,33 @@ const HeroContainer = styled.div`
   }
 `;
 
-const HeroGrid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 3rem;
-  align-items: center;
-
-  @media (min-width: ${theme.breakpoints.lg}) {
-    grid-template-columns: 1fr 400px;
-    gap: 4rem;
-  }
-`;
-
-const HeroContent = styled.div`
-  color: white;
-`;
-
-const HeroTitle = styled.h1`
-  margin-bottom: 1.5rem;
-
-  .blue {
-    color: ${theme.colors.blue};
-  }
-
-  .gold {
-    color: ${theme.colors.gold};
-  }
-`;
-
-const HeroSubtitle = styled.p`
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 2.5rem;
-  max-width: 600px;
-`;
-
-const CTAButton = styled.a`
-  display: inline-block;
-  background: ${theme.colors.blue};
-  color: white;
-  padding: 1rem 2.5rem;
-  border-radius: ${theme.borderRadius.lg};
-  font-family: ${theme.fonts.montserrat};
-  font-weight: ${theme.fontWeights.semibold};
-  font-size: 1.125rem;
-  text-decoration: none;
-  cursor: pointer;
-
-  &:hover {
-    background: ${theme.colors.royal};
-  }
-`;
 
 const StatsContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
 
+  & > :nth-child(3) {
+    grid-column: 1 / -1; /* span both columns */
+    justify-self: center; /* center horizontally */
+  }
+
   @media (min-width: ${theme.breakpoints.sm}) {
     grid-template-columns: repeat(3, 1fr);
+
+    & > :nth-child(3) {
+      grid-column: auto; /* reset to single column */
+      justify-self: auto; /* reset centering */
+    }
   }
 
   @media (min-width: ${theme.breakpoints.lg}) {
     grid-template-columns: repeat(2, 1fr);
+
+    & > :nth-child(3) {
+      grid-column: 1 / -1; /* span both columns again */
+      justify-self: center; /* center horizontally again */
+    }
   }
 `;
 
@@ -129,6 +133,23 @@ const StatCard = styled.div<{ $fullWidth?: boolean }>`
   border-radius: ${theme.borderRadius.xl};
   text-align: center;
   box-shadow: ${theme.shadows.lg};
+  min-width: 200px;
+
+  .stat {
+    font-family: ${theme.fonts.montserrat};
+    font-weight: ${theme.fontWeights.bold};
+    font-size: 3.5rem;
+    color: ${theme.colors.blue};
+    margin-bottom: 0.5rem;
+  }
+
+  .label {
+    font-family: ${theme.fonts.montserrat};
+    font-weight: ${theme.fontWeights.semibold};
+    font-size: 0.875rem;
+    color: ${theme.colors.gold};
+    text-transform: capitalize;
+  }
 
   /* Full width for third card on mobile/tablet */
   ${(props) =>
@@ -139,51 +160,6 @@ const StatCard = styled.div<{ $fullWidth?: boolean }>`
     }
   `}
 `;
-
-const StatValue = styled.div`
-  font-family: ${theme.fonts.bebas};
-  font-size: 3.5rem;
-  color: ${theme.colors.blue};
-  margin-bottom: 0.5rem;
-`;
-
-const StatLabel = styled.div`
-  font-family: ${theme.fonts.montserrat};
-  font-weight: ${theme.fontWeights.semibold};
-  font-size: 0.875rem;
-  color: ${theme.colors.gold};
-  text-transform: capitalize;
-`;
-
-// TYPES
-interface StatCardProps {
-  value: string;
-  label: string;
-  delay?: number;
-  fullWidth?: boolean;
-}
-
-// STAT CARD COMPONENT
-function StatCardComponent({
-  value,
-  label,
-  delay = 0,
-  fullWidth = false,
-}: StatCardProps) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay }}
-      viewport={{ once: true }}
-    >
-      <StatCard $fullWidth={fullWidth} className="stat-hover-lift">
-        <StatValue>{value}</StatValue>
-        <StatLabel>{label}</StatLabel>
-      </StatCard>
-    </motion.div>
-  );
-}
 
 // MAIN COMPONENT
 export default function HeroLanding() {
@@ -196,45 +172,45 @@ export default function HeroLanding() {
   return (
     <HeroSection id="home">
       <HeroContainer>
-        <HeroGrid>
-          {/* Left Content */}
-          <HeroContent>
-            <motion.div {...fadeInImmediate}>
-              <Tagline className="text-gold" style={{ marginBottom: "1.5rem" }}>
-                Your Transformation Journey Starts Now
-              </Tagline>
-
-              <HeroTitle className="hero-title">
-                <span className="blue">WHERE SCIENCE</span>
-                <br />
-                <span className="blue">MEETS </span>
-                <span className="gold">STRENGTH</span>
-              </HeroTitle>
-
-              <HeroSubtitle className="hero-subtitle">
-                Personalized training programs designed for real results. No
-                gimmicks, just proven methods that transform your body and mind.
-              </HeroSubtitle>
-
-              <CTAButton href="#contact" className="button-hover-lift">
-                Get Started Now
-              </CTAButton>
-            </motion.div>
-          </HeroContent>
-
-          {/* Right Stats */}
+        <div className="hero-grid">
+          <motion.div {...fadeInImmediate}>
+            <Tagline className="text-gold" style={{ marginBottom: "1.5rem" }}>
+              Your Transformation Journey Starts Now
+            </Tagline>
+            <HeroTitle className="hero-title">
+              <span className="blue">WHERE SCIENCE</span>
+              <br />
+              <span className="blue">MEETS </span>
+              <span className="gold">STRENGTH</span>
+            </HeroTitle>
+            <p className="hero-subtitle">
+              Personalized training programs designed for real results. No
+              gimmicks, just proven methods that transform your body and mind.
+            </p>
+            <Button variant="primary" href="#contact" className="button-hover-lift">
+              Get Started Now
+            </Button>
+          </motion.div>
           <StatsContainer>
-            {stats.map((stat, index) => (
-              <StatCardComponent
-                key={index}
-                value={stat.value}
-                label={stat.label}
-                delay={stat.delay}
-                fullWidth={stat.fullWidth}
-              />
+            {stats.map((stat, idx) => (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: stat.delay }}
+                viewport={{ once: true }}
+                key={`card-${idx}`}
+              >
+                <StatCard
+                  $fullWidth={stat.fullWidth}
+                  className="stat-hover-lift"
+                >
+                  <div className="stat">{stat.value}</div>
+                  <div className="label">{stat.label}</div>
+                </StatCard>
+              </motion.div>
             ))}
           </StatsContainer>
-        </HeroGrid>
+        </div>
       </HeroContainer>
     </HeroSection>
   );
