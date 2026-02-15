@@ -91,76 +91,7 @@ The project uses styled-components for all styling:
 - **Global Styles**: `/styles/GlobalStyles.tsx` - Global CSS reset and base styles
 - **Shared Components**: `/styles/SharedComponents.tsx` - Reusable styled components (buttons, containers, etc.)
 - **Component Styles**: Each component file contains its own styled-components
-
-Example of creating a styled component:
-```typescript
-import styled from 'styled-components'
-import { theme } from '@/styles/theme'
-
-const Button = styled.button`
-  background: ${theme.colors.blue};
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: ${theme.borderRadius.lg};
-
-  &:hover {
-    background: ${theme.colors.royal};
-  }
-
-  @media (min-width: ${theme.breakpoints.md}) {
-    padding: 1rem 2rem;
-  }
-`
-```
-
-### Content
-- Update personal information in `/app/about/page.tsx`
-- Modify programs and pricing in `/app/programs/page.tsx`
-- Add real testimonials in `/app/testimonials/page.tsx`
-- Update contact information in `/components/Footer.tsx` and `/app/contact/page.tsx`
-
-### Yelp Integration
-To add real Yelp reviews:
-1. Get your Yelp Business ID
-2. Use Yelp Fusion API or embed widget
-3. Replace placeholder in `/app/testimonials/page.tsx`
-
-### Payment Integration
-To enable program purchases:
-1. Integrate Stripe or PayPal
-2. Add payment processing to `/app/programs/page.tsx`
-3. Set up webhook endpoints for order processing
-
-## Project Structure
-
-```
-nextrep-homepage/
-├── app/
-│   ├── layout.tsx          # Root layout with GlobalStyles
-│   ├── page.tsx            # Home page
-│   ├── about/
-│   │   └── page.tsx        # About page
-│   ├── programs/
-│   │   └── page.tsx        # Programs page
-│   ├── testimonials/
-│   │   └── page.tsx        # Reviews page
-│   └── contact/
-│       └── page.tsx        # Contact page
-├── components/
-│   ├── Navbar.tsx          # Navigation component
-│   └── Footer.tsx          # Footer component
-├── styles/
-│   ├── theme.ts            # Theme configuration (colors, fonts, etc.)
-│   ├── GlobalStyles.tsx    # Global styles
-│   └── SharedComponents.tsx # Reusable styled components
-├── public/                 # Static assets
-├── package.json           # Dependencies
-├── next.config.js         # Next.js config (with styled-components support)
-└── tsconfig.json          # TypeScript config
-```
-
-## Styled-Components Architecture
-
+ 
 ### Theme System
 All design tokens are centralized in `/styles/theme.ts`:
 - **Colors**: Brand colors with consistent naming
@@ -227,10 +158,6 @@ const Component = styled.div`
   }
 `
 ```
-
-## Support
-
-For any questions or issues, please contact: contact@nextrep-athletics.com
 
 ## License
 
