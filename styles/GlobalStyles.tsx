@@ -19,7 +19,7 @@ export const GlobalStyles = createGlobalStyle`
     font-family: ${theme.fonts.inter};
     background-color: ${theme.colors.white};
     color: ${theme.colors.dark};
-    line-height: 1.6;
+    line-height: normal;
   }
 
   /* Custom scrollbar */
