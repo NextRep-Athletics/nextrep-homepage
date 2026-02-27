@@ -70,6 +70,7 @@ const BebasTitle = styled.h2<{ $size?: "sm" | "md" | "lg" }>`
 
 const ContactSection = styled.section`
   padding: 5rem 2rem;
+  background-color: rgba(30, 74, 107, 0.1);
 
   @media (min-width: ${theme.breakpoints.sm}) {
     padding: 6rem 3rem;
