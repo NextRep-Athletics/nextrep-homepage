@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { theme } from "@/styles/theme";
 import { motionPresets, staggeredAnimation } from "@/lib/utils/animations";
 import { trainers } from "@/lib/constants/trainers";
-import type { Trainer, TrainerCredential } from "@/lib/constants/trainers";
+import type { Trainer } from "@/lib/constants/trainers";
 
 // STYLED COMPONENTS
 // SectionContainer component 
@@ -22,33 +22,6 @@ const SectionContainer = styled.div`
     padding: 0 4rem;
   }
 `;
-
-// const BebasTitle = styled.h2<{ $size?: "sm" | "md" | "lg" }>`
-//   font-family: ${theme.fonts.montserrat};
-//   font-weight: ${theme.fontWeights.bold};
-//   letter-spacing: 0.05em;
-
-//   ${(props) => {
-//     if (props.$size === "sm")
-//       return `
-//       font-size: 2.5rem;
-//       @media (min-width: ${theme.breakpoints.md}) { font-size: 3.5rem; }
-//       @media (min-width: ${theme.breakpoints.lg}) { font-size: 4rem; }
-//     `;
-//     if (props.$size === "lg")
-//       return `
-//       font-size: 3rem;
-//       @media (min-width: ${theme.breakpoints.md}) { font-size: 4.5rem; }
-//       @media (min-width: ${theme.breakpoints.lg}) { font-size: 5.5rem; }
-//     `;
-//     // Default 'md'
-//     return `
-//       font-size: 3rem;
-//       @media (min-width: ${theme.breakpoints.md}) { font-size: 4rem; }
-//       @media (min-width: ${theme.breakpoints.lg}) { font-size: 4.5rem; }
-//     `;
-//   }}
-// `;
 
 // HeroTitle component 
 const HeroTitle = styled.h1`
@@ -99,11 +72,6 @@ const TrainersGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   gap: 3rem;
-
-  @media (min-width: ${theme.breakpoints.xl}) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-  }
 `;
 
 const TrainerCard = styled.div`
@@ -119,40 +87,38 @@ const TrainerCardInner = styled.div`
   gap: 1.5rem;
   padding: 2rem;
 
-  @media (min-width: ${theme.breakpoints.sm}) {
-    grid-template-columns: 200px 1fr;
-    gap: 2rem;
+  @media (min-width: ${theme.breakpoints.md}) {
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: auto auto;
+    gap: 3rem;
+    align-items: start;
   }
 `;
 
-const TrainerImageWrapper = styled.div`
-  position: relative;
-  width: 100%;
+const TrainerImage = styled.img`
+  width: auto;
+  max-height: 275px;
   aspect-ratio: 3/4;
   border-radius: ${theme.borderRadius.lg};
-  overflow: hidden;
-  background: #e0e0e0; /* Placeholder background */
+  object-fit: cover;
+  display: block;
 
-  @media (min-width: ${theme.breakpoints.sm}) {
-    width: 200px;
-    height: 280px;
+  @media (max-width: calc(${theme.breakpoints.md} - 1px)) {
+    max-width: 250px;
+    margin: 0 auto;
   }
+`;
 
-  /* Placeholder styling when no image */
+const TrainerPhotoWrapper = styled.div`
+  order: 1;
   display: flex;
-  align-items: center;
   justify-content: center;
-  font-size: 3rem;
-  color: #999;
-`;
 
-const TrainerContent = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const TrainerHeader = styled.div`
-  margin-bottom: 1rem;
+  @media (min-width: ${theme.breakpoints.md}) {
+    grid-column: 1;
+    grid-row: 1;
+    margin: auto;
+  }
 `;
 
 const TrainerName = styled.h3`
@@ -161,6 +127,10 @@ const TrainerName = styled.h3`
   font-size: 1.75rem;
   color: ${theme.colors.blue};
   margin-bottom: 0.25rem;
+
+  @media (min-width: ${theme.breakpoints.md}) {
+    margin-bottom: 1rem;
+  }
 `;
 
 const TrainerTitle = styled.p`
@@ -170,14 +140,24 @@ const TrainerTitle = styled.p`
   color: ${theme.colors.gold};
 `;
 
+const TrainerInfoSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  order: 2;
+
+  @media (min-width: ${theme.breakpoints.md}) {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+`;
+
 const TrainerBio = styled.div`
-  flex: 1;
-  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
 `;
 
 const BioText = styled.p`
   font-family: ${theme.fonts.montserrat};
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: ${theme.colors.dark};
   margin-bottom: 1rem;
 
@@ -190,8 +170,13 @@ const CredentialsList = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  padding-top: 1.5rem;
-  border-top: 2px solid #f0f0f0;
+  order: 3;
+
+  @media (min-width: ${theme.breakpoints.md}) {
+    order: initial;
+    grid-column: 1;
+    grid-row: 2;
+  }
 `;
 
 const CredentialItem = styled.div<{ $color?: string }>`
@@ -220,34 +205,34 @@ function TrainerCardComponent({ trainer, index }: TrainerCardComponentProps) {
     <motion.div {...staggeredAnimation(index, 0.2)}>
       <TrainerCard className="card-hover-lift">
         <TrainerCardInner>
-          {/* Trainer Photo */}
-          <TrainerImageWrapper>
-            {/* TODO: Replace with actual Image component when photos are available */}
-            👤
-          </TrainerImageWrapper>
+          {/* Photo */}
+          <TrainerPhotoWrapper>
+            <TrainerImage src={trainer.photo} alt={`${trainer.name} - ${trainer.title}`} />
+          </TrainerPhotoWrapper>
 
-          {/* Trainer Info */}
-          <TrainerContent>
-            <TrainerHeader>
+          {/* Name, Title, and Bio */}
+          <TrainerInfoSection>
+            <div>
               <TrainerName>{trainer.name}</TrainerName>
               <TrainerTitle>{trainer.title}</TrainerTitle>
-            </TrainerHeader>
+            </div>
 
             <TrainerBio>
               {trainer.bio.map((paragraph, idx) => (
                 <BioText key={idx}>{paragraph}</BioText>
               ))}
             </TrainerBio>
+          </TrainerInfoSection>
 
-            <CredentialsList>
-              {trainer.credentials.map((credential, idx) => (
-                <CredentialItem key={idx} $color={credential.color}>
-                  <credential.icon />
-                  <span>{credential.text}</span>
-                </CredentialItem>
-              ))}
-            </CredentialsList>
-          </TrainerContent>
+          {/* Credentials */}
+          <CredentialsList>
+            {trainer.credentials.map((credential, idx) => (
+              <CredentialItem key={idx} $color={credential.color}>
+                <credential.icon />
+                <span>{credential.text}</span>
+              </CredentialItem>
+            ))}
+          </CredentialsList>
         </TrainerCardInner>
       </TrainerCard>
     </motion.div>
