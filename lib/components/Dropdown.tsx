@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme } from "@/styles/theme";
+import { theme } from "@/lib/styles/theme";
 import { FaChevronDown } from "react-icons/fa";
 
 //#region styled components
