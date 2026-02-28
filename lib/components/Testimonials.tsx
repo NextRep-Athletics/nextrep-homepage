@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+
 import QuoteIcon from "@/lib/assets/icons/EllipsisIcon.svg";
 import { motion } from "framer-motion";
 import styled from "styled-components";
@@ -174,13 +174,17 @@ const AvatarWrapper = styled.div`
   overflow: hidden;
   background: ${theme.colors.inputBgDisabled};
   flex-shrink: 0;
-
-  /* Placeholder styling */
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
-  color: #999;
+
+  img {
+    width: auto;
+    height: 50px;
+    border-radius: ${theme.borderRadius.lg};
+    object-fit: cover;
+    display: block;
+  }
 `;
 
 const ClientName = styled.p`
@@ -212,7 +216,12 @@ function TestimonialCardComponent({
     <motion.div {...staggeredAnimation(index, 0.15)}>
       <TestimonialCard $isBottom={isBottom} className="card-hover-lift">
         <div className="top">
-          <AvatarWrapper>👤</AvatarWrapper>
+          <AvatarWrapper>
+            <img
+              src={testimonial.photo ? testimonial.photo : BlueDumbell.src}
+              alt="profile"
+            />
+          </AvatarWrapper>
           <img
             className="testimonial-quote"
             src={QuoteIcon.src}
@@ -243,17 +252,25 @@ export default function Testimonials() {
             <Title $size="sm">REAL PEOPLE. REAL RESULTS.</Title>
           </div>
         </motion.div>
-
-        <TestimonialsGrid>
-          {testimonials.map((testimonial, index) => (
-            <TestimonialCardComponent
-              key={testimonial.id}
-              testimonial={testimonial}
-              index={index}
-              isBottom={index === 2} // Third card is centered bottom
-            />
-          ))}
-        </TestimonialsGrid>
+        {testimonials.length === 1 ? (
+          <TestimonialCardComponent
+            key={testimonials[0].id}
+            testimonial={testimonials[0]}
+            index={0}
+            isBottom={false}
+          />
+        ) : (
+          <TestimonialsGrid>
+            {testimonials.map((testimonial, index) => (
+              <TestimonialCardComponent
+                key={testimonial.id}
+                testimonial={testimonial}
+                index={index}
+                isBottom={index === 2}
+              />
+            ))}
+          </TestimonialsGrid>
+        )}
       </SectionContainer>
     </TestimonialsSection>
   );

@@ -12,19 +12,11 @@ export interface Testimonial {
 
 export const testimonials: Testimonial[] = [
   {
-    id: "alex-martin",
-    name: "Alex Martin",
-    photo: "/images/testimonials/alex-martin.jpg", // TODO: Replace with actual image
+    id: "chris-tate",
+    name: "Chris Tate",
+    photo: "",
     quote:
-      "It's not just about looking better. I sleep better, I have more energy, and I actually enjoy working out now.",
-    subtitle: "Active NextRep Client",
-  },
-  {
-    id: "jane-peterson",
-    name: "Jane Peterson",
-    photo: "/images/testimonials/jane-peterson.jpg", // TODO: Replace with actual image
-    quote:
-      "Down 42 pounds and I actually enjoy working out now. This program made fitness sustainable, not miserable.",
+      "Working with NextRep, I have a stronger structure making my schedule easier to follow. These plans also strenghen muscle groups I would not have found on my own.",
     subtitle: "Active NextRep Client",
   },
 ];
