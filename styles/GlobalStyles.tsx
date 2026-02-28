@@ -1,10 +1,8 @@
-'use client'
-import { createGlobalStyle } from 'styled-components';
-import { theme } from './theme';
+"use client";
+import { createGlobalStyle } from "styled-components";
+import { theme } from "./theme";
 
 export const GlobalStyles = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
-
   * {
     margin: 0;
     padding: 0;
@@ -16,10 +14,10 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    font-family: ${theme.fonts.inter};
+    font-family: var(--font-inter), sans-serif;
     background-color: ${theme.colors.white};
     color: ${theme.colors.dark};
-    line-height: 1.6;
+    line-height: normal;
   }
 
   /* Custom scrollbar */
@@ -28,7 +26,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: ${theme.colors.scrollbarTrack};
   }
 
   ::-webkit-scrollbar-thumb {
@@ -57,5 +55,13 @@ export const GlobalStyles = createGlobalStyle`
   /* Remove default input styles */
   input, textarea, select {
     font-family: inherit;
+  }
+
+  .text-gold {
+    color: ${theme.colors.gold};
+  }
+ 
+  .montserrat {
+    font-family: var(--font-montserrat), sans-serif;
   }
 `;
