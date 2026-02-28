@@ -18,7 +18,13 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || ""),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL
+      ? process.env.NEXT_PUBLIC_SITE_URL.startsWith("http")
+        ? process.env.NEXT_PUBLIC_SITE_URL
+        : `https://${process.env.NEXT_PUBLIC_SITE_URL}`
+      : "https://nextrep-homepage.vercel.app"
+  ),
   title: "NextRep Athletics - Science-Based Personal Training",
   description:
     "Where science meets strength. Evidence-based personal training combining CSCS certification with public health expertise. Serving Southern California & Virtual Training Nationwide.",
