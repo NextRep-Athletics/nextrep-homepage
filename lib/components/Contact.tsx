@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Location from "@/lib/assets/icons/Location.svg";
 import Mail from "@/lib/assets/icons/Mail.svg";
 import styled from "styled-components";
@@ -12,6 +12,8 @@ import Textarea from "@/lib/components/TextArea";
 import Dropdown from "@/lib/components/Dropdown";
 import type { DropdownOption } from "@/lib/components/Dropdown";
 import Button from "@/lib/components/Button";
+
+type ToastState = { type: "success" | "error"; message: string } | null;
 
 //#region styled components
 const ContactSection = styled.section`
@@ -179,6 +181,22 @@ const FormCard = styled.div`
     }
   }
 `;
+
+const Toast = styled(motion.div)<{ $type: "success" | "error" }>`
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+  padding: 1rem 1.5rem;
+  border-radius: ${theme.borderRadius.lg};
+  box-shadow: ${theme.shadows["2xl"]};
+  color: white;
+  font-weight: ${theme.fontWeights.semibold};
+  font-size: 0.9rem;
+  max-width: 340px;
+  background-color: ${({ $type }) =>
+    $type === "success" ? "#16a34a" : "#dc2626"};
+`;
 //#endregion
 
 // FITNESS GOAL OPTIONS
@@ -193,15 +211,25 @@ const fitnessGoalOptions: DropdownOption[] = [
   { value: "other", label: "Other" },
 ];
 
+const initialForm = {
+  fullName: "",
+  email: "",
+  phone: "",
+  fitnessGoal: "",
+  message: "",
+};
+
 // MAIN COMPONENT
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    phone: "",
-    fitnessGoal: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState(initialForm);
+  const [isLoading, setIsLoading] = useState(false);
+  const [toast, setToast] = useState<ToastState>(null);
+
+  useEffect(() => {
+    if (!toast) return;
+    const timer = setTimeout(() => setToast(null), 4000);
+    return () => clearTimeout(timer);
+  }, [toast]);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -215,10 +243,27 @@ export default function Contact() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Handle form submission (e.g., send to API, email service, etc.)
-    console.log("Form submitted:", formData);
+    setIsLoading(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error ?? "Something went wrong.");
+      setFormData(initialForm);
+      setToast({ type: "success", message: "Message sent! We'll be in touch within 24 hours." });
+    } catch (err) {
+      setToast({
+        type: "error",
+        message: err instanceof Error ? err.message : "Failed to send. Please try again.",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -316,8 +361,9 @@ export default function Contact() {
                     variant="primary"
                     type="submit"
                     className="button-hover-lift"
+                    disabled={isLoading}
                   >
-                    Send Message
+                    {isLoading ? "Sending..." : "Send Message"}
                   </Button>
                 </div>
               </form>
@@ -325,6 +371,19 @@ export default function Contact() {
           </motion.div>
         </ContactGrid>
       </SectionContainer>
+      <AnimatePresence>
+        {toast && (
+          <Toast
+            $type={toast.type}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 16 }}
+            transition={{ duration: 0.25 }}
+          >
+            {toast.message}
+          </Toast>
+        )}
+      </AnimatePresence>
     </ContactSection>
   );
 }
