@@ -16,9 +16,8 @@ const montserrat = Montserrat({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "";
-
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || ""),
   title: "NextRep Athletics - Science-Based Personal Training",
   description:
     "Where science meets strength. Evidence-based personal training combining CSCS certification with public health expertise. Serving Southern California & Virtual Training Nationwide.",
@@ -37,13 +36,13 @@ export const metadata: Metadata = {
   authors: [{ name: "NextRep Athletics" }],
   openGraph: {
     type: "website",
-    url: `${siteUrl}/`,
+    url: "/",
     title: "NextRep Athletics - Science-Based Personal Training",
     description:
       "Where science meets strength. Evidence-based personal training combining CSCS certification with public health expertise.",
     images: [
       {
-        url: `${siteUrl}/CardLogo.jpg`,
+        url: "/CardLogo.jpg",
         width: 1200,
         height: 630,
         alt: "NextRep Athletics",
@@ -55,7 +54,7 @@ export const metadata: Metadata = {
     title: "NextRep Athletics - Science-Based Personal Training",
     description:
       "Where science meets strength. Evidence-based personal training combining CSCS certification with public health expertise.",
-    images: [`${siteUrl}/CardLogo.jpg`],
+    images: ["/CardLogo.jpg"],
   },
   icons: {
     icon: [
@@ -68,7 +67,7 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
   alternates: {
-    canonical: `${siteUrl}/`,
+    canonical: "/",
   },
   themeColor: "#003262",
 };
