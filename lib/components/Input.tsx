@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import { theme } from "@/styles/theme";
 
-// STYLED COMPONENTS
-
+//#region styled components
 const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -48,8 +47,7 @@ const StyledInput = styled.input`
     opacity: 0.6;
   }
 `;
-
-// TYPES
+//#endregion
 
 interface InputProps {
   label: string;

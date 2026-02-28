@@ -5,6 +5,7 @@ import { theme } from "@/styles/theme";
 import Image from "next/image";
 import AltLogo from "@/lib/assets/icons/WhiteLogo.svg";
 
+//#region styled components
 const FooterContainer = styled.footer`
   background: #1a2332; /* Dark blue-gray from design */
   color: ${theme.colors.white};
@@ -55,8 +56,7 @@ const Copyright = styled.p`
     text-align: right;
   }
 `;
-
-// COMPONENT
+//#endregion
 
 export default function Footer() {
   return (

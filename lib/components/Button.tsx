@@ -4,7 +4,6 @@ import Link from "next/link";
 import styled, { css } from "styled-components";
 import { theme } from "@/styles/theme";
 
-// TYPES
 type ButtonVariant = "primary" | "secondary" | "outline" | "dark";
 
 interface ButtonProps {
@@ -17,7 +16,7 @@ interface ButtonProps {
   className?: string;
 }
 
-// VARIANT STYLES
+//#region styled components
 function getVariantStyles(variant: ButtonVariant) {
   switch (variant) {
     case "primary":
@@ -92,7 +91,6 @@ const baseStyles = css<{ $variant: ButtonVariant }>`
   }
 `;
 
-// STYLED COMPONENTS
 const StyledLink = styled(Link)<{ $variant: ButtonVariant }>`
   ${baseStyles}
 `;
@@ -100,8 +98,8 @@ const StyledLink = styled(Link)<{ $variant: ButtonVariant }>`
 const StyledButton = styled.button<{ $variant: ButtonVariant }>`
   ${baseStyles}
 `;
+//#endregion
 
-// MAIN COMPONENT
 export default function Button({
   variant = "primary",
   href,

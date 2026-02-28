@@ -7,8 +7,7 @@ import styled from "styled-components";
 import { theme } from "@/styles/theme";
 import Logo from "@/lib/assets/icons/MainLogo.svg";
 
-// STYLED COMPONENTS
-
+//#region styled components
 const Nav = styled.nav`
   background: #f5f5f5; /* Light gray background from design */
   position: sticky;
@@ -123,8 +122,7 @@ const MobileNavLink = styled(Link)`
     color: ${theme.colors.royal};
   }
 `;
-
-// COMPONENT
+//#endregion
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);

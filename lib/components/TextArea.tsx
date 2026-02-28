@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import { theme } from "@/styles/theme";
 
-// STYLED COMPONENTS
-
+//#region styled components
 const TextareaWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -51,8 +50,7 @@ const StyledTextarea = styled.textarea`
     resize: none;
   }
 `;
-
-// TYPES
+//#endregion
 
 interface TextareaProps {
   label: string;

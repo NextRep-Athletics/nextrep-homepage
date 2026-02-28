@@ -2,8 +2,7 @@ import styled from "styled-components";
 import { theme } from "@/styles/theme";
 import { FaChevronDown } from "react-icons/fa";
 
-// STYLED COMPONENTS
-
+//#region styled components
 const DropdownWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -76,8 +75,7 @@ const DropdownIcon = styled(FaChevronDown)`
   color: ${theme.colors.dark};
   pointer-events: none; /* Click passes through to Dropdown */
 `;
-
-// TYPES
+//#endregion
 
 export interface DropdownOption {
   value: string;

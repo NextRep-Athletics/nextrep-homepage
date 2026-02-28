@@ -6,6 +6,7 @@ import { fadeInImmediate } from "@/lib/utils/animations";
 import GymBackground from "@/lib/assets/images/GymBackground.jpg";
 import Button from "@/lib/components/Button";
 
+//#region styled components
 const Tagline = styled.p`
   font-family: ${theme.fonts.montserrat};
   font-weight: ${theme.fontWeights.semibold};
@@ -160,6 +161,7 @@ const StatCard = styled.div<{ $fullWidth?: boolean }>`
     }
   `}
 `;
+//#endregion
 
 // MAIN COMPONENT
 export default function HeroLanding() {

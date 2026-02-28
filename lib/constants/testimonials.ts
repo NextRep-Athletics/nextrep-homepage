@@ -27,12 +27,4 @@ export const testimonials: Testimonial[] = [
       "Down 42 pounds and I actually enjoy working out now. This program made fitness sustainable, not miserable.",
     subtitle: "Active NextRep Client",
   },
-  {
-    id: "victor-geiger",
-    name: "Victor Geiger",
-    photo: "/images/testimonials/victor-geiger.jpg", // TODO: Replace with actual image
-    quote:
-      "I'm 58 and in the best shape of my life. My doctor was shocked at my last physical. Best money I've ever spent.",
-    subtitle: "Active NextRep Client",
-  },
 ];
