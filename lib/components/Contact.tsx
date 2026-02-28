@@ -42,7 +42,6 @@ const SectionContainer = styled.div`
 `;
 
 const Tagline = styled.p`
-  font-family: ${theme.fonts.montserrat};
   font-weight: ${theme.fontWeights.semibold};
   font-size: 0.875rem;
   letter-spacing: 0.1em;
@@ -54,7 +53,6 @@ const Tagline = styled.p`
 `;
 
 const Title = styled.h2<{ $size?: "sm" | "md" | "lg" }>`
-  font-family: ${theme.fonts.montserrat};
   font-weight: ${theme.fontWeights.bold};
   letter-spacing: 0.05em;
 
@@ -98,7 +96,7 @@ const ContactGrid = styled.div`
 `;
 
 const ContactInfo = styled.div`
-  color: #1a2733;
+  color: ${theme.colors.dark};
 
   .description {
     margin-bottom: 3rem;
@@ -114,7 +112,6 @@ const ContactInfo = styled.div`
       display: flex;
       align-items: center;
       gap: 1rem;
-      font-family: ${theme.fonts.montserrat};
     }
 
     .text {
@@ -210,7 +207,7 @@ export default function Contact() {
   };
 
   return (
-    <ContactSection id="contact">
+    <ContactSection id="contact" className="montserrat">
       <SectionContainer>
         <ContactGrid>
           {/* Left - Contact Info */}

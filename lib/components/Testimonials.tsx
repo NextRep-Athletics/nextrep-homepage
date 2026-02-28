@@ -11,7 +11,7 @@ import BlueDumbell from "@/lib/assets/icons/BlueDumbell.svg";
 
 //#region styled components
 const TestimonialsSection = styled.section`
-  background: #1a3a52; /* Dark blue background */
+  background: ${theme.colors.testimonialsBg};
   background-image: url(${BlueDumbell.src});
   background-repeat: repeat;
   background-size: 40px;
@@ -45,9 +45,7 @@ const SectionContainer = styled.div`
   }
 `;
 
-// Tagline component
 const Tagline = styled.p`
-  font-family: ${theme.fonts.montserrat};
   font-weight: ${theme.fontWeights.semibold};
   font-size: 0.875rem;
   letter-spacing: 0.1em;
@@ -59,7 +57,6 @@ const Tagline = styled.p`
 `;
 
 const Title = styled.h2<{ $size?: "sm" | "md" | "lg" }>`
-  font-family: ${theme.fonts.montserrat};
   font-weight: ${theme.fontWeights.bold};
   letter-spacing: 0.05em;
   color: #fff;
@@ -139,19 +136,19 @@ const TestimonialCard = styled.div<{ $isBottom?: boolean }>`
   `}
 
   .quote {
-    font-family: ${theme.fonts.montserrat};
     font-size: 1rem;
     font-weight: 600;
     color: ${theme.colors.dark};
   }
 `;
+
 const AvatarWrapper = styled.div`
   position: relative;
   width: 80px;
   height: 80px;
   border-radius: 50%;
   overflow: hidden;
-  background: #e0e0e0; /* Placeholder background */
+  background: ${theme.colors.inputBgDisabled};
   flex-shrink: 0;
 
   /* Placeholder styling */
@@ -163,7 +160,6 @@ const AvatarWrapper = styled.div`
 `;
 
 const ClientName = styled.p`
-  font-family: ${theme.fonts.montserrat};
   font-weight: ${theme.fontWeights.bold};
   font-size: 1rem;
   color: ${theme.colors.dark};
@@ -213,7 +209,7 @@ function TestimonialCardComponent({
 // MAIN COMPONENT
 export default function Testimonials() {
   return (
-    <TestimonialsSection id="testimonials">
+    <TestimonialsSection id="testimonials" className="montserrat">
       <SectionContainer>
         <motion.div {...motionPresets.fadeInUpSmall}>
           <div className="header">

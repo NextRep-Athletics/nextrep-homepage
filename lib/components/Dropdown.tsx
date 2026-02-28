@@ -10,7 +10,6 @@ const DropdownWrapper = styled.div`
 `;
 
 const Label = styled.label`
-  font-family: ${theme.fonts.montserrat};
   font-weight: ${theme.fontWeights.semibold};
   font-size: 0.875rem;
   color: ${theme.colors.dark};
@@ -25,10 +24,9 @@ const StyledDropdown = styled.select`
   width: 100%;
   padding: 0.875rem 1rem;
   padding-right: 2.5rem; /* Space for dropdown arrow */
-  font-family: ${theme.fonts.montserrat};
   font-size: 0.9rem;
   color: ${theme.colors.dark};
-  background: #f5f5f5;
+  background: ${theme.colors.inputBg};
   border: 2px solid transparent;
   border-radius: ${theme.borderRadius.md};
   appearance: none; /* Remove default arrow */
@@ -37,7 +35,7 @@ const StyledDropdown = styled.select`
 
   /* Placeholder styling */
   &:invalid {
-    color: #999;
+    color: ${theme.colors.placeholder};
   }
 
   option {
@@ -50,7 +48,7 @@ const StyledDropdown = styled.select`
 
   /* HOVER NOTE: Add subtle border color change on hover */
   &:hover {
-    background: #ececec;
+    background: ${theme.colors.inputBgHover};
   }
 
   &:focus {
@@ -60,7 +58,7 @@ const StyledDropdown = styled.select`
   }
 
   &:disabled {
-    background: #e0e0e0;
+    background: ${theme.colors.inputBgDisabled};
     cursor: not-allowed;
     opacity: 0.6;
   }
@@ -106,7 +104,7 @@ export default function Dropdown({
   disabled = false,
 }: DropdownProps) {
   return (
-    <DropdownWrapper>
+    <DropdownWrapper className="montserrat">
       <Label htmlFor={name}>
         {label}
         {required && <span style={{ color: theme.colors.red }}> *</span>}

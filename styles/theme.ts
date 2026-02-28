@@ -10,12 +10,13 @@ export const theme = {
     navy: "#0F2535",
     white: "#F8F8F8",
     gray: "#6B7280",
-    black: "#000000",
-    pageBackground: "#F4F4F4",
-  },
-  fonts: {
-    montserrat: "var(--font-montserrat), sans-serif",
-    inter: "var(--font-inter), sans-serif",
+    inputBg: "#F5F5F5",
+    inputBgHover: "#ECECEC",
+    inputBgDisabled: "#E0E0E0",
+    placeholder: "#999999",
+    testimonialsBg: "#1A3A52",
+    footerBg: "#1A2332",
+    scrollbarTrack: "#F1F1F1",
   },
   fontWeights: {
     light: 300,
@@ -39,28 +40,13 @@ export const theme = {
     xl: "1280px",
     "2xl": "1536px",
   },
-  spacing: {
-    xs: "0.25rem",
-    sm: "0.5rem",
-    md: "1rem",
-    lg: "1.5rem",
-    xl: "2rem",
-    "2xl": "3rem",
-    "3xl": "4rem",
-    "4xl": "6rem",
-  },
   borderRadius: {
-    sm: "0.25rem",
     md: "0.375rem",
     lg: "0.5rem",
     xl: "0.75rem",
-    "2xl": "1rem",
-    full: "9999px",
   },
   transitions: {
-    fast: "150ms ease-in-out",
     normal: "300ms ease-in-out",
-    slow: "500ms ease-in-out",
   },
 };
 

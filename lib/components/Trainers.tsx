@@ -35,7 +35,6 @@ const SectionContainer = styled.div`
 `;
 
 const TrainerSectionTitle = styled.h1`
-  font-family: ${theme.fonts.montserrat};
   font-size: 3.75rem;
   margin-bottom: 4rem;
   letter-spacing: 0.05em;
@@ -117,7 +116,6 @@ const TrainerCard = styled.div`
     }
 
     .name {
-      font-family: ${theme.fonts.montserrat};
       font-weight: ${theme.fontWeights.bold};
       font-size: 1.75rem;
       color: ${theme.colors.blue};
@@ -129,7 +127,6 @@ const TrainerCard = styled.div`
     }
 
     .title {
-      font-family: ${theme.fonts.montserrat};
       font-weight: ${theme.fontWeights.semibold};
       font-size: 1.25rem;
       color: ${theme.colors.gold};
@@ -139,7 +136,6 @@ const TrainerCard = styled.div`
       margin-top: 1.5rem;
 
       p {
-        font-family: ${theme.fonts.montserrat};
         font-size: 1rem;
         color: ${theme.colors.dark};
         margin-bottom: 1rem;
@@ -169,7 +165,6 @@ const CredentialItem = styled.div<{ $color?: string }>`
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  font-family: ${theme.fonts.montserrat};
   font-size: 0.875rem;
   color: ${theme.colors.dark};
 
@@ -231,7 +226,7 @@ function TrainerCardComponent({ trainer, index }: TrainerCardComponentProps) {
 // MAIN COMPONENT
 export default function Trainers() {
   return (
-    <TrainersSection id="trainers">
+    <TrainersSection id="trainers" className="montserrat">
       <SectionContainer>
         <motion.div {...motionPresets.fadeInUpSmall}>
           <TrainerSectionTitle>

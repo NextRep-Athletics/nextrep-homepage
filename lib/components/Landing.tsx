@@ -8,7 +8,6 @@ import Button from "@/lib/components/Button";
 
 //#region styled components
 const Tagline = styled.p`
-  font-family: ${theme.fonts.montserrat};
   font-weight: ${theme.fontWeights.semibold};
   font-size: 0.875rem;
   letter-spacing: 0.1em;
@@ -20,7 +19,6 @@ const Tagline = styled.p`
 `;
 
 const HeroTitle = styled.h1`
-  font-family: ${theme.fonts.montserrat};
   font-size: 3.75rem;
   margin-bottom: 1rem;
   letter-spacing: 0.05em;
@@ -72,7 +70,7 @@ const HeroContainer = styled.div`
   width: 100%;
 
   .hero-subtitle {
-    color: #1a2733;
+    color: ${theme.colors.dark};
     margin-bottom: 2.5rem;
     max-width: 600px;
   }
@@ -137,7 +135,6 @@ const StatCard = styled.div<{ $fullWidth?: boolean }>`
   min-width: 200px;
 
   .stat {
-    font-family: ${theme.fonts.montserrat};
     font-weight: ${theme.fontWeights.bold};
     font-size: 3.5rem;
     color: ${theme.colors.blue};
@@ -145,7 +142,6 @@ const StatCard = styled.div<{ $fullWidth?: boolean }>`
   }
 
   .label {
-    font-family: ${theme.fonts.montserrat};
     font-weight: ${theme.fontWeights.semibold};
     font-size: 0.875rem;
     color: ${theme.colors.gold};
@@ -172,7 +168,7 @@ export default function HeroLanding() {
   ];
 
   return (
-    <HeroSection id="home">
+    <HeroSection id="home" className="montserrat">
       <HeroContainer>
         <div className="hero-grid">
           <motion.div {...fadeInImmediate}>

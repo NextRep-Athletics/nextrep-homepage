@@ -75,7 +75,6 @@ const baseStyles = css<{ $variant: ButtonVariant }>`
   display: inline-block;
   padding: 0.75rem 1.5rem;
   border-radius: ${theme.borderRadius.lg};
-  font-family: ${theme.fonts.montserrat};
   font-weight: ${theme.fontWeights.semibold};
   transition: all ${theme.transitions.normal};
   text-align: center;
@@ -111,7 +110,7 @@ export default function Button({
 }: ButtonProps) {
   if (href && !disabled) {
     return (
-      <StyledLink href={href} $variant={variant} className={className}>
+      <StyledLink href={href} $variant={variant} className={`montserrat ${className}`.trim()}>
         {children}
       </StyledLink>
     );
@@ -123,7 +122,7 @@ export default function Button({
       onClick={onClick}
       $variant={variant}
       disabled={disabled}
-      className={className}
+      className={`montserrat ${className}`.trim()}
     >
       {children}
     </StyledButton>

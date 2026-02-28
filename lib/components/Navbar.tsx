@@ -9,7 +9,7 @@ import Logo from "@/lib/assets/icons/MainLogo.svg";
 
 //#region styled components
 const Nav = styled.nav`
-  background: #f5f5f5; /* Light gray background from design */
+  background: ${theme.colors.inputBg};
   position: sticky;
   top: 0;
   z-index: 50;
@@ -54,7 +54,6 @@ const DesktopMenu = styled.div`
 `;
 
 const NavLink = styled(Link)`
-  font-family: ${theme.fonts.montserrat};
   font-weight: ${theme.fontWeights.semibold};
   font-size: 1rem;
   color: ${theme.colors.blue}; /* Nav links in blue from design */
@@ -112,7 +111,6 @@ const MobileMenuContent = styled.div`
 `;
 
 const MobileNavLink = styled(Link)`
-  font-family: ${theme.fonts.montserrat};
   font-weight: ${theme.fontWeights.semibold};
   color: ${theme.colors.blue};
   padding: 0.5rem 0;
@@ -135,7 +133,7 @@ export default function Header() {
   ];
 
   return (
-    <Nav>
+    <Nav className="montserrat">
       <NavContainer>
         <NavContent>
           <LogoLink href="/">

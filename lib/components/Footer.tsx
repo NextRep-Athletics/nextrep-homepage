@@ -7,7 +7,7 @@ import AltLogo from "@/lib/assets/icons/WhiteLogo.svg";
 
 //#region styled components
 const FooterContainer = styled.footer`
-  background: #1a2332; /* Dark blue-gray from design */
+  background: ${theme.colors.footerBg};
   color: ${theme.colors.white};
   border-top: 4px solid ${theme.colors.gold}; /* Gold top border */
 `;
@@ -48,7 +48,6 @@ const LogoLink = styled(Link)`
 const Copyright = styled.p`
   color: rgba(255, 255, 255, 0.7);
   font-size: 0.875rem;
-  font-family: ${theme.fonts.montserrat};
   text-align: center;
   margin: 0;
 
@@ -60,7 +59,7 @@ const Copyright = styled.p`
 
 export default function Footer() {
   return (
-    <FooterContainer>
+    <FooterContainer className="montserrat">
       <FooterContent>
         <FooterInner>
           <LogoLink href="/">
