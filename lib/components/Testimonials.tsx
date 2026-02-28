@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import QuoteIcon from "@/lib/assets/icons/EllipsisIcon.svg";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import { theme } from "@/styles/theme";
@@ -8,12 +9,32 @@ import { testimonials } from "@/lib/constants/testimonials";
 import type { Testimonial } from "@/lib/constants/testimonials";
 import BlueDumbell from "@/lib/assets/icons/BlueDumbell.svg";
 
-// STYLED COMPONENTS
-// SectionContainer component 
+//#region styled components
+const TestimonialsSection = styled.section`
+  background: #1a3a52; /* Dark blue background */
+  background-image: url(${BlueDumbell.src});
+  background-repeat: repeat;
+  background-size: 40px;
+  padding: 5rem 2rem;
+
+  @media (min-width: ${theme.breakpoints.sm}) {
+    padding: 6rem 3rem;
+  }
+
+  @media (min-width: ${theme.breakpoints.lg}) {
+    padding: 8rem 4rem;
+  }
+`;
+
 const SectionContainer = styled.div`
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 2rem;
+
+  .header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
 
   @media (min-width: ${theme.breakpoints.sm}) {
     padding: 0 3rem;
@@ -24,7 +45,7 @@ const SectionContainer = styled.div`
   }
 `;
 
-// Tagline component 
+// Tagline component
 const Tagline = styled.p`
   font-family: ${theme.fonts.montserrat};
   font-weight: ${theme.fontWeights.semibold};
@@ -37,11 +58,11 @@ const Tagline = styled.p`
   }
 `;
 
-// BebasTitle component  - replaced Bebas with Montserrat
-const BebasTitle = styled.h2<{ $size?: "sm" | "md" | "lg" }>`
+const Title = styled.h2<{ $size?: "sm" | "md" | "lg" }>`
   font-family: ${theme.fonts.montserrat};
   font-weight: ${theme.fontWeights.bold};
   letter-spacing: 0.05em;
+  color: #fff;
 
   ${(props) => {
     if (props.$size === "sm")
@@ -65,31 +86,6 @@ const BebasTitle = styled.h2<{ $size?: "sm" | "md" | "lg" }>`
   }}
 `;
 
-const TestimonialsSection = styled.section`
-  background: #1a3a52; /* Dark blue background */
-  background-image: url(${BlueDumbell.src});
-  background-repeat: repeat;
-  background-size: 40px;
-  padding: 5rem 2rem;
-
-  @media (min-width: ${theme.breakpoints.sm}) {
-    padding: 6rem 3rem;
-  }
-
-  @media (min-width: ${theme.breakpoints.lg}) {
-    padding: 8rem 4rem;
-  }
-`;
-
-const SectionHeader = styled.div`
-  text-align: center;
-  margin-bottom: 4rem;
-`;
-
-const StyledBebasTitle = styled(BebasTitle)`
-  color: white;
-`;
-
 const TestimonialsGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
@@ -109,6 +105,26 @@ const TestimonialCard = styled.div<{ $isBottom?: boolean }>`
   padding: 2rem;
   box-shadow: ${theme.shadows["2xl"]};
 
+  .top {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+
+    .testimonial-quote {
+      position: absolute;
+      left: 90px;
+    }
+  }
+
+  .bottom {
+    display: flex;
+    justify-content: flex-end;
+    border-top: 2px solid ${theme.colors.gold};
+    padding-top: 20px;
+  }
+
   /* Center the third card on desktop */
   ${(props) =>
     props.$isBottom &&
@@ -118,17 +134,17 @@ const TestimonialCard = styled.div<{ $isBottom?: boolean }>`
       max-width: 550px;
       margin: 0 auto;
       width: 100%;
+      justify-self: center;
     }
   `}
-`;
 
-const TestimonialTop = styled.div`
-  display: flex;
-  align-items: flex-start;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
+  .quote {
+    font-family: ${theme.fonts.montserrat};
+    font-size: 1rem;
+    font-weight: 600;
+    color: ${theme.colors.dark};
+  }
 `;
-
 const AvatarWrapper = styled.div`
   position: relative;
   width: 80px;
@@ -146,39 +162,21 @@ const AvatarWrapper = styled.div`
   color: #999;
 `;
 
-const QuoteText = styled.p`
-  font-family: ${theme.fonts.montserrat};
-  font-size: 0.95rem;
-  color: ${theme.colors.dark};
-  font-style: italic;
-`;
-
-const Divider = styled.div`
-  height: 2px;
-  background: ${theme.colors.gold};
-  margin: 1.5rem 0;
-  opacity: 0.5;
-`;
-
-const TestimonialBottom = styled.div`
-  text-align: center;
-`;
-
 const ClientName = styled.p`
   font-family: ${theme.fonts.montserrat};
   font-weight: ${theme.fontWeights.bold};
   font-size: 1rem;
   color: ${theme.colors.dark};
   margin-bottom: 0.25rem;
-`;
 
-const ClientSubtitle = styled.p`
-  font-family: ${theme.fonts.montserrat};
-  font-size: 0.875rem;
-  color: ${theme.colors.gray};
+  span {
+    font-size: 0.875rem;
+    font-weight: ${theme.fontWeights.regular};
+    color: ${theme.colors.gray};
+  }
 `;
+//#endregion
 
-// COMPONENTS
 interface TestimonialCardComponentProps {
   testimonial: Testimonial;
   index: number;
@@ -193,26 +191,20 @@ function TestimonialCardComponent({
   return (
     <motion.div {...staggeredAnimation(index, 0.15)}>
       <TestimonialCard $isBottom={isBottom} className="card-hover-lift">
-        <TestimonialTop>
-          <AvatarWrapper>
-            {/* TODO: Replace with actual Image component when photos are available */}
-            {/* <Image 
-              src={testimonial.photo} 
-              alt={testimonial.name}
-              fill
-              style={{ objectFit: 'cover' }}
-            /> */}
-            👤
-          </AvatarWrapper>
-          <QuoteText>"{testimonial.quote}"</QuoteText>
-        </TestimonialTop>
-
-        <Divider />
-
-        <TestimonialBottom>
-          <ClientName>{testimonial.name}</ClientName>
-          <ClientSubtitle>{testimonial.subtitle}</ClientSubtitle>
-        </TestimonialBottom>
+        <div className="top">
+          <AvatarWrapper>👤</AvatarWrapper>
+          <img
+            className="testimonial-quote"
+            src={QuoteIcon.src}
+            alt="quotation"
+          />
+          <p className="quote">{testimonial.quote}</p>
+        </div>
+        <div className="bottom">
+          <ClientName>
+            {testimonial.name}&nbsp;-&nbsp;<span>{testimonial.subtitle}</span>
+          </ClientName>
+        </div>
       </TestimonialCard>
     </motion.div>
   );
@@ -224,14 +216,12 @@ export default function Testimonials() {
     <TestimonialsSection id="testimonials">
       <SectionContainer>
         <motion.div {...motionPresets.fadeInUpSmall}>
-          <SectionHeader>
+          <div className="header">
             <Tagline className="text-gold" style={{ marginBottom: "1rem" }}>
               Client Transformations
             </Tagline>
-            <StyledBebasTitle $size="sm">
-              REAL PEOPLE. REAL RESULTS.
-            </StyledBebasTitle>
-          </SectionHeader>
+            <Title $size="sm">REAL PEOPLE. REAL RESULTS.</Title>
+          </div>
         </motion.div>
 
         <TestimonialsGrid>

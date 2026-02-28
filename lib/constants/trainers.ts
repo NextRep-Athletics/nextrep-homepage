@@ -1,17 +1,14 @@
-import { IconType } from "react-icons";
-import {
-  FaStar,
-  FaGraduationCap,
-  FaSwimmer,
-  FaHeartbeat,
-} from "react-icons/fa";
+import Certification from "@/lib/assets/icons/Certification.svg"
+import Education from "@/lib/assets/icons/Education.svg"
+import Swimming from "@/lib/assets/icons/Swimming.svg"
+import Heart from "@/lib/assets/icons/Heart.svg"
 import Chad from "@/lib/assets/images/Chad.webp"
 import Cyrus from "@/lib/assets/images/Cyrus.webp"
 
 // TYPES
 
 export interface TrainerCredential {
-  icon: IconType;
+  icon: string;
   text: string;
   color?: string;
 }
@@ -41,22 +38,22 @@ export const trainers: Trainer[] = [
     ],
     credentials: [
       {
-        icon: FaStar,
+        icon: Certification.src,
         text: "CSCS - Certified Strength & Conditioning Specialist",
         color: "#C9A961", // Gold
       },
       {
-        icon: FaGraduationCap,
+        icon: Education.src,
         text: "Master of Public Health (MPH)",
         color: "#E84545", // Red
       },
       {
-        icon: FaSwimmer,
+        icon: Swimming.src,
         text: "Division I Athlete - Cornell University Swimming",
         color: "#003262", // Blue
       },
       {
-        icon: FaHeartbeat,
+        icon: Heart.src,
         text: "Published Health Researcher",
         color: "#00BFA5", // Teal
       },
@@ -75,22 +72,22 @@ export const trainers: Trainer[] = [
     ],
     credentials: [
       {
-        icon: FaStar,
+        icon: Certification.src,
         text: "CSCS - Certified Strength & Conditioning Specialist",
         color: "#C9A961", // Gold
       },
       {
-        icon: FaGraduationCap,
+        icon: Education.src,
         text: "Bachelor of Science in Bioengineering from University of California San Diego",
         color: "#E84545", // Red
       },
       {
-        icon: FaSwimmer,
+        icon: Swimming.src,
         text: "Division 1 Athlete - University of California San Diego Swimming",
         color: "#003262", // Blue
       },
       {
-        icon: FaHeartbeat,
+        icon: Heart.src,
         text: "2+ Experience in Gait and Biomechanics at Rady Children’s Hospital",
         color: "#00BFA5", // Teal
       },

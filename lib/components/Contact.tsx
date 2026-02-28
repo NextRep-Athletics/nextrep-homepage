@@ -1,7 +1,9 @@
 "use client";
+
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { FaMapMarkerAlt, FaEnvelope } from "react-icons/fa";
+import Location from "@/lib/assets/icons/Location.svg";
+import Mail from "@/lib/assets/icons/Mail.svg";
 import styled from "styled-components";
 import { theme } from "@/styles/theme";
 import { motionPresets } from "@/lib/utils/animations";
@@ -11,8 +13,20 @@ import Dropdown from "@/lib/components/Dropdown";
 import type { DropdownOption } from "@/lib/components/Dropdown";
 import Button from "@/lib/components/Button";
 
-// STYLED COMPONENTS
-// SectionContainer component 
+//#region styled components
+const ContactSection = styled.section`
+  padding: 5rem 2rem;
+  background-color: rgba(30, 74, 107, 0.1);
+
+  @media (min-width: ${theme.breakpoints.sm}) {
+    padding: 6rem 3rem;
+  }
+
+  @media (min-width: ${theme.breakpoints.lg}) {
+    padding: 8rem 4rem;
+  }
+`;
+
 const SectionContainer = styled.div`
   max-width: 1280px;
   margin: 0 auto;
@@ -27,7 +41,6 @@ const SectionContainer = styled.div`
   }
 `;
 
-// Tagline component 
 const Tagline = styled.p`
   font-family: ${theme.fonts.montserrat};
   font-weight: ${theme.fontWeights.semibold};
@@ -40,8 +53,7 @@ const Tagline = styled.p`
   }
 `;
 
-// BebasTitle component  - replaced Bebas with Montserrat
-const BebasTitle = styled.h2<{ $size?: "sm" | "md" | "lg" }>`
+const Title = styled.h2<{ $size?: "sm" | "md" | "lg" }>`
   font-family: ${theme.fonts.montserrat};
   font-weight: ${theme.fontWeights.bold};
   letter-spacing: 0.05em;
@@ -68,17 +80,9 @@ const BebasTitle = styled.h2<{ $size?: "sm" | "md" | "lg" }>`
   }}
 `;
 
-const ContactSection = styled.section`
-  padding: 5rem 2rem;
-  background-color: rgba(30, 74, 107, 0.1);
-
-  @media (min-width: ${theme.breakpoints.sm}) {
-    padding: 6rem 3rem;
-  }
-
-  @media (min-width: ${theme.breakpoints.lg}) {
-    padding: 8rem 4rem;
-  }
+const ContactTitle = styled(Title)`
+  color: ${theme.colors.blue};
+  margin-bottom: 1.5rem;
 `;
 
 const ContactGrid = styled.div`
@@ -94,48 +98,37 @@ const ContactGrid = styled.div`
 `;
 
 const ContactInfo = styled.div`
-  color: #1A2733;
-`;
+  color: #1a2733;
 
-const StyledBebasTitle = styled(BebasTitle)`
-  color: ${theme.colors.blue};
-  margin-bottom: 1.5rem;
-`;
-
-const Description = styled.p`
-  margin-bottom: 3rem;
-  max-width: 500px;
-`;
-
-const ContactDetails = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-`;
-
-const ContactItem = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  font-family: ${theme.fonts.montserrat};
-
-  svg {
-    font-size: 1.25rem;
-    color: ${theme.colors.gold};
-    flex-shrink: 0;
+  .description {
+    margin-bottom: 3rem;
+    max-width: 500px;
   }
-`;
 
-const ContactText = styled.p`
-  font-size: 1rem;
-`;
+  .details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 
-const ContactLink = styled.a`
-  font-size: 1rem;
-  color: ${theme.colors.blue};
+    .item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-family: ${theme.fonts.montserrat};
+    }
 
-  &:hover {
-    color: ${theme.colors.blueLight};
+    .text {
+      font-size: 1rem;
+    }
+
+    .link {
+      font-size: 1rem;
+      color: ${theme.colors.blue};
+
+      &:hover {
+        color: ${theme.colors.blueLight};
+      }
+    }
   }
 `;
 
@@ -148,32 +141,33 @@ const FormCard = styled.div`
   @media (min-width: ${theme.breakpoints.sm}) {
     padding: 3rem;
   }
-`;
 
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-`;
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 
-const FormRow = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
+    .row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
 
-  @media (min-width: ${theme.breakpoints.sm}) {
-    grid-template-columns: repeat(2, 1fr);
+      @media (min-width: ${theme.breakpoints.sm}) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .submit-wrapper {
+      width: 100%;
+      margin-top: 0.5rem;
+
+      button {
+        width: 100%;
+      }
+    }
   }
 `;
-
-const SubmitButtonWrapper = styled.div`
-  width: 100%;
-  margin-top: 0.5rem;
-
-  button {
-    width: 100%;
-  }
-`;
+//#endregion
 
 // FITNESS GOAL OPTIONS
 const fitnessGoalOptions: DropdownOption[] = [
@@ -213,8 +207,6 @@ export default function Contact() {
     e.preventDefault();
     // TODO: Handle form submission (e.g., send to API, email service, etc.)
     console.log("Form submitted:", formData);
-    // Reset form after submission
-    // setFormData({ fullName: '', email: '', phone: '', fitnessGoal: '', message: '' })
   };
 
   return (
@@ -225,32 +217,32 @@ export default function Contact() {
           <motion.div {...motionPresets.fadeInLeft}>
             <ContactInfo>
               <Tagline style={{ marginBottom: "1rem" }}>Get In Touch</Tagline>
-              <StyledBebasTitle $size="sm">
+              <ContactTitle $size="sm">
                 Ready To Start Your Journey?
-              </StyledBebasTitle>
-              <Description className="body-text">
+              </ContactTitle>
+              <p className="description body-text">
                 Fill out the form and we'll get back to you within 24 hours to
                 schedule your free consultation. Let's talk about your goals and
                 create a plan to achieve them.
-              </Description>
+              </p>
 
-              <ContactDetails>
-                <ContactItem>
-                  <FaMapMarkerAlt />
-                  <ContactText>
+              <div className="details">
+                <div className="item">
+                  <img src={Location.src} alt="location" />
+                  <p className="text">
                     Serving Southern California & Virtual Training Nationwide
-                  </ContactText>
-                </ContactItem>
-                <ContactItem>
-                  <FaEnvelope />
-                  <ContactLink
+                  </p>
+                </div>
+                <div className="item">
+                  <img src={Mail.src} alt="contact-mail" />
+                  <a
+                    className="link link-hover-underline"
                     href="mailto:contact@nextrep-athletics.com"
-                    className="link-hover-underline"
                   >
                     contact@nextrep-athletics.com
-                  </ContactLink>
-                </ContactItem>
-              </ContactDetails>
+                  </a>
+                </div>
+              </div>
             </ContactInfo>
           </motion.div>
 
@@ -260,7 +252,7 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <FormCard>
-              <Form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit}>
                 <Input
                   label="Full Name"
                   type="text"
@@ -270,7 +262,7 @@ export default function Contact() {
                   required
                 />
 
-                <FormRow>
+                <div className="row">
                   <Input
                     label="Email"
                     type="email"
@@ -286,7 +278,7 @@ export default function Contact() {
                     value={formData.phone}
                     onChange={handleChange}
                   />
-                </FormRow>
+                </div>
 
                 <Dropdown
                   label="Fitness Goal"
@@ -307,12 +299,16 @@ export default function Contact() {
                   rows={5}
                 />
 
-                <SubmitButtonWrapper>
-                  <Button variant="primary" type="submit" className="button-hover-lift">
+                <div className="submit-wrapper">
+                  <Button
+                    variant="primary"
+                    type="submit"
+                    className="button-hover-lift"
+                  >
                     Send Message
                   </Button>
-                </SubmitButtonWrapper>
-              </Form>
+                </div>
+              </form>
             </FormCard>
           </motion.div>
         </ContactGrid>
