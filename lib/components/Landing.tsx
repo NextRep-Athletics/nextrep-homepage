@@ -34,6 +34,10 @@ const HeroTitle = styled.h1`
   @media (min-width: ${theme.breakpoints.md}) {
     font-size: 4.25rem;
   }
+
+  @media (max-width: 500px) {
+    font-size: 2.25rem;
+  }
 `;
 
 const HeroSection = styled.section`
@@ -96,7 +100,6 @@ const HeroContainer = styled.div`
   }
 `;
 
-
 const StatsContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -122,6 +125,16 @@ const StatsContainer = styled.div`
     & > :nth-child(3) {
       grid-column: 1 / -1; /* span both columns again */
       justify-self: center; /* center horizontally again */
+    }
+  }
+
+  @media (max-width: 500px) {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
+    & > * {
+      width: 100%;
     }
   }
 `;
@@ -156,6 +169,19 @@ const StatCard = styled.div<{ $fullWidth?: boolean }>`
       grid-column: 1 / -1;
     }
   `}
+
+  @media (max-width: 500px) {
+    min-width: unset;
+    width: 100%;
+
+    .stat {
+      font-size: 2rem;
+    }
+
+    .label {
+      font-size: 1rem;
+    }
+  }
 `;
 //#endregion
 
@@ -168,7 +194,7 @@ export default function HeroLanding() {
   ];
 
   return (
-    <HeroSection id="home" className="montserrat">
+    <HeroSection id="home" className="font-montserrat">
       <HeroContainer>
         <div className="hero-grid">
           <motion.div {...fadeInImmediate}>
@@ -185,7 +211,11 @@ export default function HeroLanding() {
               Personalized training programs designed for real results. No
               gimmicks, just proven methods that transform your body and mind.
             </p>
-            <Button variant="primary" href="#contact" className="button-hover-lift">
+            <Button
+              variant="primary"
+              href="#contact"
+              className="button-hover-lift"
+            >
               Get Started Now
             </Button>
           </motion.div>

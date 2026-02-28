@@ -18,6 +18,10 @@ const TrainersSection = styled.section`
   @media (min-width: ${theme.breakpoints.lg}) {
     padding: 8rem 4rem;
   }
+
+  @media (max-width: 500px) {
+    padding: 3rem 1rem;
+  }
 `;
 
 const SectionContainer = styled.div`
@@ -31,6 +35,10 @@ const SectionContainer = styled.div`
 
   @media (min-width: ${theme.breakpoints.lg}) {
     padding: 0 4rem;
+  }
+
+  @media (max-width: 500px) {
+    padding: 0;
   }
 `;
 
@@ -50,6 +58,10 @@ const TrainerSectionTitle = styled.h1`
 
   @media (min-width: ${theme.breakpoints.md}) {
     font-size: 4.25rem;
+  }
+
+  @media (max-width: 500px) {
+    font-size: 2rem;
   }
 `;
 
@@ -76,6 +88,11 @@ const TrainerCard = styled.div`
       grid-template-rows: auto auto;
       gap: 3rem;
       align-items: start;
+    }
+
+    @media (max-width: 500px) {
+      padding: 1rem;
+      gap: 1rem;
     }
   }
 

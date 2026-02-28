@@ -24,6 +24,10 @@ const TestimonialsSection = styled.section`
   @media (min-width: ${theme.breakpoints.lg}) {
     padding: 8rem 4rem;
   }
+
+  @media (max-width: 500px) {
+    padding: 3rem 1rem;
+  }
 `;
 
 const SectionContainer = styled.div`
@@ -42,6 +46,10 @@ const SectionContainer = styled.div`
 
   @media (min-width: ${theme.breakpoints.lg}) {
     padding: 0 4rem;
+  }
+
+  @media (max-width: 500px) {
+    padding: 0;
   }
 `;
 
@@ -67,18 +75,21 @@ const Title = styled.h2<{ $size?: "sm" | "md" | "lg" }>`
       font-size: 2.5rem;
       @media (min-width: ${theme.breakpoints.md}) { font-size: 3.5rem; }
       @media (min-width: ${theme.breakpoints.lg}) { font-size: 4rem; }
+      @media (max-width: 500px) { font-size: 1.75rem; }
     `;
     if (props.$size === "lg")
       return `
       font-size: 3rem;
       @media (min-width: ${theme.breakpoints.md}) { font-size: 4.5rem; }
       @media (min-width: ${theme.breakpoints.lg}) { font-size: 5.5rem; }
+      @media (max-width: 500px) { font-size: 2rem; }
     `;
     // Default 'md'
     return `
       font-size: 3rem;
       @media (min-width: ${theme.breakpoints.md}) { font-size: 4rem; }
       @media (min-width: ${theme.breakpoints.lg}) { font-size: 4.5rem; }
+      @media (max-width: 500px) { font-size: 2rem; }
     `;
   }}
 `;
@@ -139,6 +150,19 @@ const TestimonialCard = styled.div<{ $isBottom?: boolean }>`
     font-size: 1rem;
     font-weight: 600;
     color: ${theme.colors.dark};
+  }
+
+  @media (max-width: 500px) {
+    padding: 1.25rem;
+
+    .top {
+      flex-direction: column;
+      gap: 0.75rem;
+
+      .testimonial-quote {
+        display: none;
+      }
+    }
   }
 `;
 
