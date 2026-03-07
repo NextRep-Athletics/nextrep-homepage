@@ -1,9 +1,9 @@
-import Certification from "@/lib/assets/icons/Certification.svg"
-import Education from "@/lib/assets/icons/Education.svg"
-import Swimming from "@/lib/assets/icons/Swimming.svg"
-import Heart from "@/lib/assets/icons/Heart.svg"
-import Chad from "@/lib/assets/images/Chad.webp"
-import Cyrus from "@/lib/assets/images/Cyrus.webp"
+import Certification from "@/lib/assets/icons/Certification.svg";
+import Education from "@/lib/assets/icons/Education.svg";
+import Swimming from "@/lib/assets/icons/Swimming.svg";
+import Heart from "@/lib/assets/icons/Heart.svg";
+import Chad from "@/lib/assets/images/Chad.webp";
+import Cyrus from "@/lib/assets/images/Cyrus.webp";
 
 // TYPES
 
@@ -91,11 +91,12 @@ export const trainers: Trainer[] = [
         text: "Division 1 Athlete - UCSD Swimming",
         color: "#003262", // Blue
       },
-         //Need to clean this one up and change the icon
+      //Need to clean this one up and change the icon
       {
         icon: Certification.src,
         text: "5+ Years Coaching Experience (club swimming, xxx )",
         color: "#C9A961", // Gold
+      },
       {
         icon: Heart.src,
         text: "2+ Years Experience in Gait and Biomechanics at Rady Children’s Hospital",
