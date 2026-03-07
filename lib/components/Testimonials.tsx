@@ -101,10 +101,10 @@ const TestimonialsGrid = styled.div`
   max-width: 1100px;
   margin: 0 auto;
 
-  @media (min-width: ${theme.breakpoints.lg}) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-  }
+  // @media (min-width: ${theme.breakpoints.lg}) {
+  //   grid-template-columns: repeat(2, 1fr);
+  //   gap: 2rem;
+  // }
 `;
 
 const TestimonialCard = styled.div<{ $isBottom?: boolean }>`

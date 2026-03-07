@@ -71,7 +71,7 @@ export default function Footer() {
             />
           </LogoLink>
           <Copyright>
-            © 2024 NextRep Athletics. All rights reserved. | CSCS Certified |
+            © 2026 NextRep Athletics. All rights reserved. | CSCS Certified |
             MPH
           </Copyright>
         </FooterInner>
