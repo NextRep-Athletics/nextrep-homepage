@@ -287,7 +287,7 @@ export default function Contact() {
                 <div className="item">
                   <img src={Location.src} alt="location" />
                   <p className="text">
-                    Serving Southern California & Virtual Training Nationwide
+                    Serving Northern California & Virtual Training Nationwide
                   </p>
                 </div>
                 <div className="item">
@@ -296,7 +296,7 @@ export default function Contact() {
                     className="link link-hover-underline"
                     href="mailto:contact@nextrep-athletics.com"
                   >
-                    contact@nextrep-athletics.com
+                    cyrus@nextrep-athletics.com
                   </a>
                 </div>
               </div>
