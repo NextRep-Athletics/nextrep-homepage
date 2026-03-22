@@ -154,7 +154,8 @@ const header: React.CSSProperties = {
   backgroundColor: "#1e4a6b",
   backgroundImage: `url(${DARK_BACKGROUND_URL})`,
   backgroundRepeat: "repeat",
-  backgroundSize: "40px",
+  backgroundSize: "400px",
+  borderRadius: "10px 10px 0 0",
   textAlign: "center",
   padding: "40px 40px 36px",
 };
