@@ -14,7 +14,7 @@ import {
   Hr,
 } from "@react-email/components";
 
-const DUMBBELL_PATTERN_URL = `${process.env.NEXT_PUBLIC_SITE_URL}/BlueDumbell.png`;
+const DARK_BACKGROUND_URL = `${process.env.NEXT_PUBLIC_SITE_URL}/DarkBackground.png`;
 const LOGO_URL = `${process.env.NEXT_PUBLIC_SITE_URL}/OrgLogo.png`;
 
 interface ContactEmailProps {
@@ -152,7 +152,7 @@ const container: React.CSSProperties = {
 // CSS background for modern clients; solid #1e4a6b fallback for Outlook
 const header: React.CSSProperties = {
   backgroundColor: "#1e4a6b",
-  backgroundImage: `url(${DUMBBELL_PATTERN_URL})`,
+  backgroundImage: `url(${DARK_BACKGROUND_URL})`,
   backgroundRepeat: "repeat",
   backgroundSize: "40px",
   textAlign: "center",
