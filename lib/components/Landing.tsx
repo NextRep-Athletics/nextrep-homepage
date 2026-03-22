@@ -80,15 +80,17 @@ const HeroContainer = styled.div`
   }
 
   .hero-grid {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    // grid-template-columns: 1fr;
+    justify-content: center;
     gap: 3rem;
     align-items: center;
+  
 
-    @media (min-width: ${theme.breakpoints.lg}) {
-      grid-template-columns: 1fr 400px;
-      gap: 4rem;
-    }
+    // @media (min-width: ${theme.breakpoints.lg}) {
+    //   grid-template-columns: 1fr 400px;
+    //   gap: 4rem;
+    // }
   }
 
   @media (min-width: ${theme.breakpoints.sm}) {
@@ -219,7 +221,7 @@ export default function HeroLanding() {
               Get Started Now
             </Button>
           </motion.div>
-          <StatsContainer>
+          {/* <StatsContainer>
             {stats.map((stat, idx) => (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -237,7 +239,7 @@ export default function HeroLanding() {
                 </StatCard>
               </motion.div>
             ))}
-          </StatsContainer>
+          </StatsContainer> */}
         </div>
       </HeroContainer>
     </HeroSection>

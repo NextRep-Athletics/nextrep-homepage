@@ -2,6 +2,7 @@ import Certification from "@/lib/assets/icons/Certification.svg";
 import Education from "@/lib/assets/icons/Education.svg";
 import Swimming from "@/lib/assets/icons/Swimming.svg";
 import Heart from "@/lib/assets/icons/Heart.svg";
+import Sports from "@/lib/assets/icons/Sport.svg"
 import Chad from "@/lib/assets/images/Chad.webp";
 import Cyrus from "@/lib/assets/images/Cyrus.webp";
 
@@ -51,11 +52,10 @@ export const trainers: Trainer[] = [
         text: "Division I Athlete - Cornell University Swimming",
         color: "#003262", // Blue
       },
-      //Need to clean this one up and change the icon
       {
-        icon: Certification.src,
+        icon: Sports.src,
         text: "5+ Years Coaching Experience (high school athletics, club swimming, and strength training)",
-        color: "#C9A961", // Gold
+        color: "#475569", // Accent
       },
       {
         icon: Heart.src,
@@ -91,11 +91,10 @@ export const trainers: Trainer[] = [
         text: "Division 1 Athlete - UCSD Swimming",
         color: "#003262", // Blue
       },
-      //Need to clean this one up and change the icon
       {
-        icon: Certification.src,
+        icon: Sports.src,
         text: "5+ Years Coaching Experience (club swimming, xxx )",
-        color: "#C9A961", // Gold
+        color: "#475569", // Accent
       },
       {
         icon: Heart.src,
