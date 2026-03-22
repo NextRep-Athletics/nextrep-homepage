@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Location from "@/lib/assets/icons/Location.svg";
 import Mail from "@/lib/assets/icons/Mail.svg";
 import styled from "styled-components";
-import { theme } from "@/styles/theme";
+import { theme } from "@/lib/styles/theme";
 import { motionPresets } from "@/lib/utils/animations";
 import Input from "@/components/Input";
 import Textarea from "@/lib/components/TextArea";

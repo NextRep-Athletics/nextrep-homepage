@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import styled, { css } from "styled-components";
-import { theme } from "@/styles/theme";
+import { theme } from "@/lib/styles/theme";
 
 type ButtonVariant = "primary" | "secondary" | "outline" | "dark";
 

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import { theme } from "@/styles/theme";
+import { theme } from "@/lib/styles/theme";
 import { motionPresets, staggeredAnimation } from "@/lib/utils/animations";
 import { trainers } from "@/lib/constants/trainers";
 import type { Trainer } from "@/lib/constants/trainers";

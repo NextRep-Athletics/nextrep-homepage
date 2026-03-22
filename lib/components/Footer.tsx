@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import styled from "styled-components";
-import { theme } from "@/styles/theme";
+import { theme } from "@/lib/styles/theme";
 import Image from "next/image";
 import AltLogo from "@/lib/assets/icons/WhiteLogo.svg";
 

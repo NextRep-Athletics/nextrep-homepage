@@ -2,9 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import ContactEmail from "@/lib/emails/ContactEmail";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(req: NextRequest) {
+  const resend = new Resend(process.env.RESEND_API_KEY);
   const { fullName, email, phone, fitnessGoal, message } = await req.json();
 
   // Validate required fields

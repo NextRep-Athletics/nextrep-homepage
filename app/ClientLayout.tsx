@@ -2,7 +2,7 @@
 import styled from "styled-components";
 import Navbar from "@/lib/components/Navbar";
 import Footer from "@/lib/components/Footer";
-import { GlobalStyles } from "@/styles/GlobalStyles";
+import { GlobalStyles } from "@/lib/styles/GlobalStyles";
 
 const LayoutWrapper = styled.div`
   min-height: 100vh;

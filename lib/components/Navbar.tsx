@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import styled from "styled-components";
-import { theme } from "@/styles/theme";
+import { theme } from "@/lib/styles/theme";
 import Logo from "@/lib/assets/icons/MainLogo.svg";
 
 //#region styled components

@@ -3,7 +3,7 @@
 import QuoteIcon from "@/lib/assets/icons/EllipsisIcon.svg";
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import { theme } from "@/styles/theme";
+import { theme } from "@/lib/styles/theme";
 import { motionPresets, staggeredAnimation } from "@/lib/utils/animations";
 import { testimonials } from "@/lib/constants/testimonials";
 import type { Testimonial } from "@/lib/constants/testimonials";

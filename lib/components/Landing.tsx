@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import { theme } from "@/styles/theme";
+import { theme } from "@/lib/styles/theme";
 import { fadeInImmediate } from "@/lib/utils/animations";
 import GymBackground from "@/lib/assets/images/GymBackground.jpg";
 import Button from "@/lib/components/Button";
