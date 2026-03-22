@@ -294,7 +294,7 @@ export default function Contact() {
                   <img src={Mail.src} alt="contact-mail" />
                   <a
                     className="link link-hover-underline"
-                    href="mailto:contact@nextrep-athletics.com"
+                    href="mailto:cyrus@nextrep-athletics.com"
                   >
                     cyrus@nextrep-athletics.com
                   </a>
