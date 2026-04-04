@@ -1,6 +1,7 @@
 "use client";
 
 import QuoteIcon from "@/lib/assets/icons/EllipsisIcon.svg";
+import UrlIcon from "@/lib/assets/icons/UrlIcon.svg";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import { theme } from "@/lib/styles/theme";
@@ -199,6 +200,18 @@ const ClientName = styled.p`
     color: ${theme.colors.gray};
   }
 `;
+
+const SourceLink = styled.a`
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.5rem;
+  align-self: center;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.85;
+  }
+`;
 //#endregion
 
 interface TestimonialCardComponentProps {
@@ -233,6 +246,16 @@ function TestimonialCardComponent({
           <ClientName>
             {testimonial.name}&nbsp;-&nbsp;<span>{testimonial.subtitle}</span>
           </ClientName>
+          {testimonial.url && (
+            <SourceLink
+              href={testimonial.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="View source"
+            >
+              <img src={UrlIcon.src} alt="external link" width={16} height={16} />
+            </SourceLink>
+          )}
         </div>
       </TestimonialCard>
     </motion.div>
