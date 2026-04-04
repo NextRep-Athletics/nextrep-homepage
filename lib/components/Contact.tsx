@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Location from "@/lib/assets/icons/Location.svg";
 import Mail from "@/lib/assets/icons/Mail.svg";
+import YelpLogo from "@/lib/assets/icons/yelp_logo_for_business.svg";
 import styled from "styled-components";
 import { theme } from "@/lib/styles/theme";
 import { motionPresets } from "@/lib/utils/animations";
@@ -100,7 +101,7 @@ const ContactGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   gap: 3rem;
-  align-items: start;
+  align-items: stretch;
 
   @media (min-width: ${theme.breakpoints.lg}) {
     grid-template-columns: 1fr 1.2fr;
@@ -109,6 +110,8 @@ const ContactGrid = styled.div`
 `;
 
 const ContactInfo = styled.div`
+  display: flex;
+  flex-direction: column;
   color: ${theme.colors.dark};
 
   .description {
@@ -271,7 +274,7 @@ export default function Contact() {
       <SectionContainer>
         <ContactGrid>
           {/* Left - Contact Info */}
-          <motion.div {...motionPresets.fadeInLeft}>
+          <motion.div {...motionPresets.fadeInLeft} style={{ height: "100%" }}>
             <ContactInfo>
               <Tagline style={{ marginBottom: "1rem" }}>Get In Touch</Tagline>
               <ContactTitle $size="sm">
@@ -300,6 +303,19 @@ export default function Contact() {
                   </a>
                 </div>
               </div>
+
+              <a
+                href="https://www.yelp.com/biz/nextrep-san-mateo"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ marginTop: "auto", paddingTop: "2rem", display: "inline-block" }}
+              >
+                <img
+                  src={YelpLogo.src}
+                  alt="Find us on Yelp"
+                  style={{ height: "30px", width: "auto" }}
+                />
+              </a>
             </ContactInfo>
           </motion.div>
 
