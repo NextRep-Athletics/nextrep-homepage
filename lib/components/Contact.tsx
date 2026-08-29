@@ -270,14 +270,14 @@ export default function Contact() {
   };
 
   return (
-    <ContactSection id="contact" className="montserrat">
+    <ContactSection id="contact" className="montserrat" aria-labelledby="contact-heading">
       <SectionContainer>
         <ContactGrid>
           {/* Left - Contact Info */}
           <motion.div {...motionPresets.fadeInLeft} style={{ height: "100%" }}>
             <ContactInfo>
               <Tagline style={{ marginBottom: "1rem" }}>Get In Touch</Tagline>
-              <ContactTitle $size="sm">
+              <ContactTitle id="contact-heading" $size="sm">
                 Ready To Start Your Journey?
               </ContactTitle>
               <p className="description body-text">
@@ -288,13 +288,13 @@ export default function Contact() {
 
               <div className="details">
                 <div className="item">
-                  <img src={Location.src} alt="location" />
+                  <img src={Location.src} alt="" />
                   <p className="text">
                     Serving Northern California & Virtual Training Nationwide
                   </p>
                 </div>
                 <div className="item">
-                  <img src={Mail.src} alt="contact-mail" />
+                  <img src={Mail.src} alt="" />
                   <a
                     className="link link-hover-underline"
                     href="mailto:cyrus@nextrep-athletics.com"
@@ -312,7 +312,7 @@ export default function Contact() {
               >
                 <img
                   src={YelpLogo.src}
-                  alt="Find us on Yelp"
+                  alt="Find us on Yelp (opens in new tab)"
                   style={{ height: "30px", width: "auto" }}
                 />
               </a>
@@ -391,6 +391,8 @@ export default function Contact() {
         {toast && (
           <Toast
             $type={toast.type}
+            role={toast.type === "error" ? "alert" : "status"}
+            aria-live={toast.type === "error" ? "assertive" : "polite"}
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 16 }}

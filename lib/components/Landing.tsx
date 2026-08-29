@@ -12,6 +12,7 @@ const Tagline = styled.p`
   font-size: 0.875rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  color: ${theme.colors.goldOnLight};
 
   @media (min-width: ${theme.breakpoints.md}) {
     font-size: 1rem;
@@ -28,7 +29,7 @@ const HeroTitle = styled.h1`
   }
 
   .gold {
-    color: ${theme.colors.gold};
+    color: ${theme.colors.goldOnLight};
   }
 
   @media (min-width: ${theme.breakpoints.md}) {
@@ -196,14 +197,14 @@ export default function HeroLanding() {
   ];
 
   return (
-    <HeroSection id="home" className="font-montserrat">
+    <HeroSection id="home" className="font-montserrat" aria-labelledby="home-heading">
       <HeroContainer>
         <div className="hero-grid">
           <motion.div {...fadeInImmediate}>
-            <Tagline className="text-gold" style={{ marginBottom: "1.5rem" }}>
+            <Tagline style={{ marginBottom: "1.5rem" }}>
               Your Transformation Journey Starts Now
             </Tagline>
-            <HeroTitle className="hero-title">
+            <HeroTitle id="home-heading" className="hero-title">
               <span className="blue">WHERE SCIENCE</span>
               <br />
               <span className="blue">MEETS </span>

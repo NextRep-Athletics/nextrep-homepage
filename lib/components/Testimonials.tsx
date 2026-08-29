@@ -232,13 +232,13 @@ function TestimonialCardComponent({
           <AvatarWrapper>
             <img
               src={testimonial.photo ? testimonial.photo : BlueDumbell.src}
-              alt="profile"
+              alt=""
             />
           </AvatarWrapper>
           <img
             className="testimonial-quote"
             src={QuoteIcon.src}
-            alt="quotation"
+            alt=""
           />
           <p className="quote">{testimonial.quote}</p>
         </div>
@@ -251,9 +251,9 @@ function TestimonialCardComponent({
               href={testimonial.url}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="View source"
+              aria-label="Read this review at the source (opens in new tab)"
             >
-              <img src={UrlIcon.src} alt="external link" width={16} height={16} />
+              <img src={UrlIcon.src} alt="" width={16} height={16} />
             </SourceLink>
           )}
         </div>
@@ -265,14 +265,14 @@ function TestimonialCardComponent({
 // MAIN COMPONENT
 export default function Testimonials() {
   return (
-    <TestimonialsSection id="testimonials" className="montserrat">
+    <TestimonialsSection id="testimonials" className="montserrat" aria-labelledby="testimonials-heading">
       <SectionContainer>
         <motion.div {...motionPresets.fadeInUpSmall}>
           <div className="header">
             <Tagline className="text-gold" style={{ marginBottom: "1rem" }}>
               Client Transformations
             </Tagline>
-            <Title $size="sm">REAL PEOPLE. REAL RESULTS.</Title>
+            <Title id="testimonials-heading" $size="sm">REAL PEOPLE. REAL RESULTS.</Title>
           </div>
         </motion.div>
         {testimonials.length === 1 ? (

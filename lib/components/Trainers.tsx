@@ -42,7 +42,7 @@ const SectionContainer = styled.div`
   }
 `;
 
-const TrainerSectionTitle = styled.h1`
+const TrainerSectionTitle = styled.h2`
   font-size: 3.75rem;
   margin-bottom: 4rem;
   letter-spacing: 0.05em;
@@ -53,7 +53,7 @@ const TrainerSectionTitle = styled.h1`
   }
 
   .gold {
-    color: ${theme.colors.gold};
+    color: ${theme.colors.goldOnLight};
   }
 
   @media (min-width: ${theme.breakpoints.md}) {
@@ -146,7 +146,7 @@ const TrainerCard = styled.div`
     .title {
       font-weight: ${theme.fontWeights.semibold};
       font-size: 1.25rem;
-      color: ${theme.colors.gold};
+      color: ${theme.colors.goldOnLight};
     }
 
     .bio {
@@ -229,7 +229,7 @@ function TrainerCardComponent({ trainer, index }: TrainerCardComponentProps) {
           <div className="credentials">
             {trainer.credentials.map((credential, idx) => (
               <CredentialItem key={idx} $color={credential.color}>
-                <img src={credential.icon} alt="credential" />
+                <img src={credential.icon} alt="" />
                 <span>{credential.text}</span>
               </CredentialItem>
             ))}
@@ -243,10 +243,10 @@ function TrainerCardComponent({ trainer, index }: TrainerCardComponentProps) {
 // MAIN COMPONENT
 export default function Trainers() {
   return (
-    <TrainersSection id="trainers" className="montserrat">
+    <TrainersSection id="trainers" className="montserrat" aria-labelledby="trainers-heading">
       <SectionContainer>
         <motion.div {...motionPresets.fadeInUpSmall}>
-          <TrainerSectionTitle>
+          <TrainerSectionTitle id="trainers-heading">
             <span className="blue">MEET YOUR </span>
             <span className="gold">TRAINERS</span>
           </TrainerSectionTitle>
