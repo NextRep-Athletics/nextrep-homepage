@@ -7,7 +7,7 @@ export const theme = {
     royal: "#023E8A",
     gold: "#D4A03A",
     goldDark: "#B8860B",
-    goldOnLight: "#655125",
+    goldOnLight: "#8A6410",
     navy: "#0F2535",
     white: "#F8F8F8",
     gray: "#6B7280",
