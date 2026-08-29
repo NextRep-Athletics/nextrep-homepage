@@ -83,7 +83,7 @@ export default function Footer() {
           <LogoLink href="/">
             <Image
               src={AltLogo.src}
-              alt="nextrep-logo"
+              alt="NextRep Athletics home"
               width={175}
               height={50}
             />
@@ -97,11 +97,11 @@ export default function Footer() {
               href="https://www.yelp.com/biz/nextrep-san-mateo"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="NextRep on Yelp"
+              aria-label="NextRep on Yelp (opens in new tab)"
             >
               <Image
                 src={YelpIcon.src}
-                alt="Yelp"
+                alt=""
                 width={28}
                 height={28}
               />

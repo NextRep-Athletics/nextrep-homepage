@@ -63,6 +63,12 @@ const NavLink = styled(Link)`
   &:hover {
     color: ${theme.colors.royal};
   }
+
+  &:focus-visible {
+    outline: 3px solid ${theme.colors.blue};
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
 `;
 
 const MobileMenuButton = styled.button`
@@ -76,6 +82,12 @@ const MobileMenuButton = styled.button`
 
   @media (min-width: ${theme.breakpoints.md}) {
     display: none;
+  }
+
+  &:focus-visible {
+    outline: 3px solid ${theme.colors.blue};
+    outline-offset: 2px;
+    border-radius: 4px;
   }
 
   /* HOVER NOTE: Add subtle scale effect on hover */
@@ -119,6 +131,12 @@ const MobileNavLink = styled(Link)`
   &:hover {
     color: ${theme.colors.royal};
   }
+
+  &:focus-visible {
+    outline: 3px solid ${theme.colors.blue};
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
 `;
 //#endregion
 
@@ -137,7 +155,7 @@ export default function Header() {
       <NavContainer>
         <NavContent>
           <LogoLink href="/">
-            <Image src={Logo.src} alt="nextrep-logo" width={175} height={50} />
+            <Image src={Logo.src} alt="NextRep Athletics home" width={175} height={50} />
           </LogoLink>
 
           {/* Desktop Navigation */}
@@ -152,14 +170,16 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <MobileMenuButton
             onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
           >
             {isOpen ? <FaTimes /> : <FaBars />}
           </MobileMenuButton>
         </NavContent>
 
         {/* Mobile Menu */}
-        <MobileMenu $isOpen={isOpen}>
+        <MobileMenu id="mobile-menu" $isOpen={isOpen}>
           <MobileMenuContent>
             {navLinks.map((link) => (
               <MobileNavLink

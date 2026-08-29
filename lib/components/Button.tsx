@@ -83,6 +83,11 @@ const baseStyles = css<{ $variant: ButtonVariant }>`
 
   ${(props) => getVariantStyles(props.$variant)}
 
+  &:focus-visible {
+    outline: 3px solid ${theme.colors.blue};
+    outline-offset: 2px;
+  }
+
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
