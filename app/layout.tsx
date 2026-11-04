@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Montserrat } from "next/font/google";
 import ClientLayout from "./ClientLayout";
 import StyledComponentsRegistry from "@/lib/registry";
@@ -76,6 +76,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+};
+
+export const viewport: Viewport = {
   themeColor: "#003262",
 };
 
